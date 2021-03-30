@@ -67,9 +67,6 @@ export class AppComponent implements OnInit{
     ];
   }
 
-  ngOnInit(): void {
-  }
-
   accueil(): void {
     console.log('Accueil');
   }
