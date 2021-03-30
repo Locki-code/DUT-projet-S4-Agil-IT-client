@@ -12,7 +12,7 @@ import {Observable} from 'rxjs';
 })
 export class ListeJeuComponent implements OnInit {
 
-jeux : Jeu[];
+jeux: Jeu[];
   jeux$: Observable<Jeu[]>;
   cols: any[];
   sort: number = undefined;
