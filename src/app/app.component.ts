@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
   constructor(public messageService: MessageService, public authService: AuthentificationService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.items = [
       {
         label: 'File',
