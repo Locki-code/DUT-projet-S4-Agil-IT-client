@@ -4,13 +4,14 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AuthentificationService} from '../_services/authentification.service';
 import {MessageService} from 'primeng/api';
 import {first} from 'rxjs/operators';
+import {MesValidateurs} from '../mes-validateurs';
 
 @Component({
   selector: 'app-profile-create',
-  templateUrl: './profile-create.component.html',
-  styleUrls: ['./profile-create.component.css']
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class ProfileCreateComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   form: any = {
     email: null,
     password: null
@@ -24,7 +25,12 @@ export class ProfileCreateComponent implements OnInit {
     nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
     pseudo: new FormControl('', [Validators.required, Validators.minLength(2)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+    password: new FormControl('', [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*\\d).{8,}')]),
+    /*password: new FormGroup({
+      pwd : new FormControl('', [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*\\d).{8,}')]),
+      confirmPwd : new FormControl(''),
+    }, [MesValidateurs.passwordConfirming])
+    */
   });
 
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
@@ -51,7 +57,15 @@ export class ProfileCreateComponent implements OnInit {
   get email(): AbstractControl {
     return this.registerForm.get('email');
   }
+  /*
+  get pwd(): AbstractControl {
+    return this.registerForm.get('password').get('pwd');
+  }
 
+  get confirmPwd(): AbstractControl {
+    return this.registerForm.get('password').get('confirmPwd');
+  }
+*/
   get password(): AbstractControl {
     return this.registerForm.get('password');
   }

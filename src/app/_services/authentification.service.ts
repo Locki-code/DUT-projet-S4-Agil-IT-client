@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of, throwError} from 'rxjs';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {Router} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../_models/user';
@@ -76,6 +76,7 @@ export class AuthentificationService {
         catchError(err => {
           this.stopRefreshTokenTimer();
           this.userSubject.next(ANONYMOUS_USER);
+          console.log('probleme');
           return throwError('bug');
           // return of('');
         }));

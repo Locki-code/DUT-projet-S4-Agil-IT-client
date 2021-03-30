@@ -28,7 +28,7 @@ import { ProfilEditComponent } from './profil-edit/profil-edit.component';
 import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
 import {InputTextModule} from "primeng/inputtext";
-import { ProfileCreateComponent } from './profile-create/profile-create.component';
+import { RegisterComponent } from './register/register.component';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -41,7 +41,7 @@ registerLocaleData(localeFr, 'fr');
     LpSolverTestComponent,
     ListeJeuComponent,
     ProfilEditComponent,
-    ProfileCreateComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

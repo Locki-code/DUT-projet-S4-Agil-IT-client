@@ -1,0 +1,62 @@
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+  Prénom : <input type="text" formControlName="prenom">
+    <div *ngIf="prenom.errors" class="invalid-feedback">
+      <div *ngIf="prenom.errors.required"> Le prénom est requis</div>
+      <div *ngIf="prenom.errors.minlength">Le prénom doit comporter au moins 2 caractères</div>
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
+  Nom : <input type="text" formControlName="nom">
+    <div *ngIf="nom.errors" class="invalid-feedback">
+      <div *ngIf="nom.errors.required"> Le nom est requis</div>
+      <div *ngIf="nom.errors.minlength">Le nom doit comporter au moins 2 caractères</div>
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
+  Pseudo : <input type="text" formControlName="pseudo">
+    <div *ngIf="pseudo.errors" class="invalid-feedback">
+      <div *ngIf="pseudo.errors.required"> Le pseudo est requis</div>
+      <div *ngIf="pseudo.errors.minlength">Le pseudo doit comporter au moins 2 caractères</div>
+    </div>
+  </div>
+  <br>
+  <div class="form-group">
+  Email : <input type="text" formControlName="email">
+    <div *ngIf="email.errors" class="invalid-feedback">
+      <div *ngIf="email.errors.required"> L'email est requis</div>
+      <div *ngIf="email.errors.email"> L'email est incorrect</div>
+    </div>
+  </div>
+  <br/>
+  <div class="form-group">
+    Mot de passe : <input type="password" formControlName="password">
+    <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
+      Le mot de passe doit comporter au moins 8 caractères (dont une majuscule, minuscule et chiffre)
+    </div>
+  </div>
+  <br>
+  <!--
+  <h4> Saisissez votre mot de passe </h4>
+  <div formGroupName="password">
+    <div class="form-group">
+      <label for="pwd"> Votre mot de passe </label>
+      <input type="password" id="pwd" class="form-control" formControlName="pwd">
+      <div *ngIf="pwd.invalid && pwd.touched" class="invalid-feedback">
+        Le mot de passe doit comporter au moins 8 caractères (dont une majuscule, minuscule et chiffre)
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="confirmPwd"> Confirmer votre mot de passe </label>
+      <input type="password" id="confirmPwd" class="form-control" formControlName="confirmPwd">
+      <div *ngIf="password.invalid && password.touched && confirmPwd.touched" class="invalid-feedback">
+        Le mot de passe doit être identique à celui renseigné précedemment
+      </div>
+    </div>
+  </div>
+  -->
+  <button [disabled]="!registerForm.valid">Valider</button>
+</form>
+

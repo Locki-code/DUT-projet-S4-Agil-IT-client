@@ -5,13 +5,13 @@ import {ProfileComponent} from './profile/profile.component';
 import {LpSolverTestComponent} from './lp-solver-test/lp-solver-test.component';
 import {ListeJeuComponent} from './liste-jeu/liste-jeu.component';
 import {ProfilEditComponent} from './profil-edit/profil-edit.component';
-import {ProfileCreateComponent} from './profile-create/profile-create.component';
+import {RegisterComponent} from './register/register.component';
 
 
 const routes: Routes = [
   {path: 'jeux/list', component: ListeJeuComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'inscription', component: ProfileCreateComponent},
+  {path: 'inscription', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'ro', component: LpSolverTestComponent},
   {path: 'profile/edit', component: ProfilEditComponent},
