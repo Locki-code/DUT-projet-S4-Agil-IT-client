@@ -1,0 +1,30 @@
+
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+  <div class="p-fluid">
+    <div class="p-field">
+      <label for="nom">Nom</label>
+      <input id="nom" type="text" pInputText>
+      <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="mat-error">
+        <div *ngIf="nom?.errors.required" style="color:crimson">Le nom est obligatoire</div>
+        <div *ngIf="nom?.errors.pattern"  style="color: crimson">Le nom doit comporter au moins deux caractères</div>
+      </div>
+    </div>
+    <div class="p-field">
+      <label for="prenom">Prénom</label>
+      <input id="prenom" type="text" pInputText>
+      <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="mat-error">
+        <div *ngIf="prenom?.errors.required" style="color:crimson">Le prénom est obligatoire</div>
+        <div *ngIf="prenom?.errors.pattern"  style="color: crimson">Le prénom doit comporter au moins deux caractères</div>
+      </div>
+    </div>
+    <div class="p-field">
+      <label for="mail">Adresse mail</label>
+      <input id="mail" type="text" pInputText>
+      <div *ngIf="mail.invalid && (mail.dirty || mail.touched)" class="mat-error">
+        <div *ngIf="mail?.errors.required" style="color:crimson">L'adresse email est obligatoire</div>
+        <div *ngIf="mail?.errors.pattern"  style="color: crimson">L'adresse email doit comporter le sigle @ </div>
+      </div>
+    </div>
+  </div>
+  <button pButton type="submit" label="Valider" [disabled]="!formulaire.valid"></button>
+</form>

@@ -55,6 +55,11 @@ export class AppComponent implements OnInit{
         ]
       },
       {
+        label: 'Inscription',
+        icon: 'pi pi-fw pi-user-plus',
+        routerLink: ['/inscription']
+      },
+      {
         label: 'Connexion',
         icon: 'pi pi-fw pi-sign-in',
         routerLink: ['/login']

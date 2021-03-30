@@ -24,6 +24,11 @@ import { ListeJeuComponent } from './liste-jeu/liste-jeu.component';
 import {CardModule} from 'primeng/card';
 import {MenubarModule} from 'primeng/menubar';
 import {TableModule} from 'primeng/table';
+import { ProfilEditComponent } from './profil-edit/profil-edit.component';
+import {ButtonModule} from "primeng/button";
+import {RippleModule} from "primeng/ripple";
+import {InputTextModule} from "primeng/inputtext";
+import { ProfileCreateComponent } from './profile-create/profile-create.component';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -34,7 +39,9 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     ProfileComponent,
     LpSolverTestComponent,
-    ListeJeuComponent
+    ListeJeuComponent,
+    ProfilEditComponent,
+    ProfileCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,10 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     CardModule,
     MenubarModule,
-    TableModule
+    TableModule,
+    ButtonModule,
+    RippleModule,
+    InputTextModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

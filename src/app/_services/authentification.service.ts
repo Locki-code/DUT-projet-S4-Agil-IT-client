@@ -44,7 +44,6 @@ export class AuthentificationService {
   }
 
   login(email: string, password: string): Observable<any> {
-    console.log('email', email, ' password ', password);
     return this.http.post<any>(`${environment.apiUrl}/auth/login`, {email, password}, httpOptions)
       .pipe(
         tap(rep => console.log(rep)),
@@ -53,6 +52,24 @@ export class AuthentificationService {
           console.log('User connected : ', user);
           this.userSubject.next(user);
           this.startRefreshTokenTimer();
+          return user;
+        }),
+        shareReplay(),
+        catchError(err => {
+          this.stopRefreshTokenTimer();
+          this.userSubject.next(ANONYMOUS_USER);
+          return throwError('bug');
+          // return of('');
+        }));
+  }
+
+  register(prenom: string, nom: string, pseudo: string, email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/auth/register`, {prenom, nom, pseudo, email, password}, httpOptions)
+      .pipe(
+        tap(rep => console.log(rep)),
+        map(rep => {
+          const user = {...rep.data.user, jwtToken: rep.data.token};
+          console.log('User connected : ', user);
           return user;
         }),
         shareReplay(),
@@ -107,5 +124,4 @@ export class AuthentificationService {
   private stopRefreshTokenTimer(): void {
     clearTimeout(this.refreshTokenTimeout);
   }
-
 }
