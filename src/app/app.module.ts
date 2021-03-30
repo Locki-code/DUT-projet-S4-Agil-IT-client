@@ -23,6 +23,8 @@ import {MarkdownModule} from 'ngx-markdown';
 import { ListeJeuComponent } from './liste-jeu/liste-jeu.component';
 import {CardModule} from 'primeng/card';
 import {MenubarModule} from 'primeng/menubar';
+import {TableModule} from 'primeng/table';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -46,6 +48,7 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     CardModule,
     MenubarModule,
+    TableModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

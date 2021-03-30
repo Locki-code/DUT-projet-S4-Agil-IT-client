@@ -7,4 +7,6 @@ export interface Jeu {
   langue: string;
   url_media: string;
   theme_id: string[];
+  nombre_joueurs: string;
+  duree: string;
 }
