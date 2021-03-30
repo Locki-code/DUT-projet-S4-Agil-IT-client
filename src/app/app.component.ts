@@ -67,9 +67,6 @@ export class AppComponent implements OnInit{
     ];
   }
 
-  ngOnInit(): void {
-  }
-
   accueil(): void {
     console.log('Accueil');
   }
@@ -77,6 +74,7 @@ export class AppComponent implements OnInit{
   jeu(): void {
     console.log('Jeu');
   }
+
   show(): void {
     const now = moment().format('LL');
     this.messageService.add({
