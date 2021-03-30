@@ -6,6 +6,7 @@ import {Jeu} from '../jeu/Jeu';
 import {Mecanique} from '../jeu/Mecanique';
 import {Editeur} from '../jeu/Editeur';
 import {Themes} from '../jeu/Themes';
+import {environment} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -78,26 +79,13 @@ export class JeuService {
   }
 
 
-  /*setJeu(jeux: Jeu[]): Observable<Jeu> {
+  /*postData() {
     this.http.post(environment.apiUrl + '/jeux', {
-      nom: jeux.nom,
-      description: jeux.description,
-      theme: jeux.theme,
-      editeur: jeux.editeur,
-      url_media: jeux.url_media,
-      langue: jeux.langue,
-      age: jeux.age,
-      poids: jeux.poids,
-      nombre_joueurs: jeux.nombre_joueur,
-      duree: jeux.duree,
-      categories: jeux.categorie,
-      mecanique: jeux.mecanique
-    }, httpOptions).pipe(
-      tap(rep => console.log(rep)),
-      shareReplay(),
-      catchError(err => {
-        return throwError(err);
-        // return of('');
-      }));
+      data: "data",
+      to: "to",
+      send: "send"
+    }, httpOptions).subscribe(rep => {
+      console.log(rep);
+    });
   }*/
 }
