@@ -14,6 +14,61 @@ export class AppComponent {
 constructor(public messageService: MessageService, public authService: AuthentificationService) {
 }
 
+  ngOnInit(): void {
+    this.items = [{
+      label: 'Accueil',
+      icon: 'pi pi-home',
+      routerLink: '/dashboard',
+      routerLinkActiveOptions: { exact: true },
+      command: () => {
+        this.accueil();
+      }
+    },
+      {
+        label: 'Intro Observable',
+        icon: 'pi pi-eye',
+        routerLink: '/introObservable',
+        routerLinkActiveOptions: { exact: true },
+        command: () => {
+          this.introObservable();
+        }
+      },
+      {
+        label: 'Intro Formulaire',
+        icon: 'pi pi-pencil',
+        routerLink: '/introFormulaire',
+        routerLinkActiveOptions: { exact: true },
+        command: () => {
+          this.introFormulaire();
+        }
+      },
+      {
+        label: 'Jeux',
+        icon: 'pi pi-users',
+        routerLink: '/jeux',
+        routerLinkActiveOptions: { exact: true },
+        command: () => {
+          this.jeu();
+        }
+      }];
+  }
+
+  accueil(): void {
+    console.log('Accueil');
+  }
+
+  jeu(): void {
+    console.log('Jeu');
+  }
+
+  introObservable(): void{
+    console.log('Intro Observable');
+  }
+
+  introFormulaire(): void{
+    console.log('Intro formulaire');
+  }
+
   show(): void {
     const now = moment().format('LL');
     this.messageService.add({

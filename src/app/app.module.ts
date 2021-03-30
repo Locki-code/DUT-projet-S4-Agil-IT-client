@@ -20,6 +20,7 @@ import { ProfileComponent } from './profile/profile.component';
 import {UserService} from './_services/user.service';
 import { LpSolverTestComponent } from './lp-solver-test/lp-solver-test.component';
 import {MarkdownModule} from 'ngx-markdown';
+import { ListeJeuComponent } from './liste-jeu/liste-jeu.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -28,7 +29,8 @@ registerLocaleData(localeFr, 'fr');
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    LpSolverTestComponent
+    LpSolverTestComponent,
+    ListeJeuComponent
   ],
   imports: [
     BrowserModule,
