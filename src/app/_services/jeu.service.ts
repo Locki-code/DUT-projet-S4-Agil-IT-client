@@ -11,7 +11,7 @@ export class JeuService {
 
   constructor(private http: HttpClient) { }
 
-  getJeu(id: number): Observable<Jeu>{
+  getJeux(): Observable<Jeu>{
     const url = 'http://127.0.0.1:8000/api/jeux/';
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})

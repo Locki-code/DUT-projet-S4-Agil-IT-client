@@ -1,21 +1,21 @@
 <h1 class='center'>Jeux</h1>
-<div class='container'>
-  <div class="row">
 
-    <div *ngFor='let jeu of jeux' class="col s6 m4">
-      <div class="card horizontal" (click)="selectPokemon(pokemon)" pkmnBorderCard>
-        <div class="card-image">
-          <!--img [src]="pokemon.picture"-->
-        </div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <p>{{ jeu.nom }}</p>
-            <!--p><small>{{ pokemon.created | date:"dd/MM/yyyy" }}</small></p-->
-            <!--span *ngFor='let type of pokemon.types' class="{{ type | pokemonTypeColor }}">{{ type }}</span-->
-          </div>
-        </div>
-      </div>
-    </div>
+
+<div class="ui-grid">
+
+
+  <div *ngFor='let jeu of jeux' class="ui-grid-col-4">
+      <p-card header="{{jeu.nom}}" subheader="{{jeu.theme}}" [style]="{width: '360px'}" styleClass="p-card-shadow">
+        <ng-template pTemplate="header">
+          <img alt="Card" src="{{jeu.url_media}}">
+        </ng-template>
+        <p>{{jeu.description}}</p>
+        <ng-template pTemplate="footer">
+
+        </ng-template>
+      </p-card>
+
   </div>
+
 </div>
 

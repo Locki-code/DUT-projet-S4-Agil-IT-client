@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {JeuService} from '../_services/jeu.service';
 import {Jeu} from '../jeu/Jeu';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-liste-jeu',
@@ -10,13 +11,18 @@ import {Jeu} from '../jeu/Jeu';
 })
 export class ListeJeuComponent implements OnInit {
 
-  jeux: Jeu[];
-  tri = 0;
+  jeux: Jeu = null;
 
-  constructor(public serviceJeu: JeuService) {
-    // @ts-ignore
-    this.serviceJeu = this.serviceJeu.getJeu();
+  constructor(private router: Router,
+              private jeuService: JeuService) {
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getJeux();
+  }
+
+  getJeux(): void {
+    this.jeuService.getJeux()
+      .subscribe(jeux => this.jeux = jeux);
+  }
 }

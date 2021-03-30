@@ -5,4 +5,6 @@ export interface Jeu {
   editeur_id: string[];
   regles: string;
   langue: string;
+  url_media: string;
+  theme_id: string[];
 }

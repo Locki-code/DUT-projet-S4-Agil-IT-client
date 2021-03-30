@@ -7,10 +7,10 @@ import {ListeJeuComponent} from './liste-jeu/liste-jeu.component';
 
 
 const routes: Routes = [
+  {path: 'jeux/list', component: ListeJeuComponent},
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'ro', component: LpSolverTestComponent},
-  {path: 'jeu', component: ListeJeuComponent},
 ];
 
 @NgModule({
