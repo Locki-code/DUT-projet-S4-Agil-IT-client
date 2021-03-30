@@ -21,8 +21,6 @@
     "@angular/platform-browser": "^11.2.7",
     "@angular/platform-browser-dynamic": "^11.2.7",
     "@angular/router": "^11.2.7",
-    "@ng-bootstrap/ng-bootstrap": "^9.1.0",
-    "bootstrap": "^4.5.0",
     "chokidar": "^3.5.1",
     "javascript-lp-solver": "^0.4.24",
     "moment": "^2.29.1",
