@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {JeuService} from '../_services/jeu.service';
 import {Jeu} from '../jeu/Jeu';
 import {Router} from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-liste-jeu',

@@ -25,7 +25,8 @@ import {CardModule} from 'primeng/card';
 import {MenubarModule} from 'primeng/menubar';
 import {TableModule} from 'primeng/table';
 import { MesJeuxComponent } from './mes-jeux/mes-jeux.component';
-
+import { DetailJeuComponent } from './detail-jeu/detail-jeu.component';
+import {ButtonModule} from 'primeng/button';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -36,7 +37,8 @@ registerLocaleData(localeFr, 'fr');
     ProfileComponent,
     LpSolverTestComponent,
     ListeJeuComponent,
-    MesJeuxComponent
+    MesJeuxComponent,
+    DetailJeuComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     CardModule,
     MenubarModule,
-    TableModule
+    TableModule,
+    ButtonModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
