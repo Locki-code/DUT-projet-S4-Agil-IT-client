@@ -11,7 +11,7 @@ export class JeuService {
 
   constructor(private http: HttpClient) { }
 
-  getJeux(sort?: number): Observable<Jeu>{
+  getJeux(sort?: number): Observable<Jeu[]>{
     let params = '';
     if (!!sort && sort === 1) {
       params = '?sort=nom';

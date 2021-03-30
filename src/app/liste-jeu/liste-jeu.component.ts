@@ -12,7 +12,8 @@ import { Observable } from 'rxjs';
 })
 export class ListeJeuComponent implements OnInit {
 
-  jeux: Jeu = null;
+jeux : Jeu[];
+  jeux$: Observable<Jeu[]>;
   cols: any[];
   sort: number = undefined;
   iconTriName = '';
@@ -23,18 +24,7 @@ export class ListeJeuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getJeux();
-    this.cols = [
-      { field: 'id', header: 'Identifiant' },
-      { field: 'nom', header: 'Nom' },
-      { field: 'nombre_joueurs', header: 'Nombre joueur' },
-      { field: 'duree', header: 'Durée' }
-    ];
-  }
-
-  getJeux(): void {
-    this.jeuService.getJeux(this.sort)
-      .subscribe(jeux => this.jeux = jeux);
+    this.jeux$ = this.jeuService.getJeux();
   }
 
   modifTriName(): void {
@@ -46,7 +36,7 @@ export class ListeJeuComponent implements OnInit {
       this.sort = undefined;
       this.iconTriName = '';
     }
-    this.getJeux();
+    this.jeux$ = this.jeuService.getJeux();
   }
   modifTriNote(): void {
     if (this.sort === undefined || this.sort === 1) {
@@ -57,6 +47,6 @@ export class ListeJeuComponent implements OnInit {
       this.sort = undefined;
       this.iconTriNote = '';
     }
-    this.getJeux();
+    this.jeux$ = this.jeuService.getJeux();
   }
 }

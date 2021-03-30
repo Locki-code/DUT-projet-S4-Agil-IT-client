@@ -17,8 +17,6 @@ export class MesJeuxComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthentificationService) { }
 
   ngOnInit(): void {
-
-
     const id = this.authService.userValue.id;
     // console.log('id ' + id);
     this.jeux = this.userService.getMesJeux(id);
