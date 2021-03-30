@@ -112,8 +112,5 @@
     </div>
   </div>
 
-  <button pButton type="submit" label="Valide"></button>
-  <div *ngIf="nom.invalid || description.invalid || regles.invalid || langue.invalid || poids.invalid || age.invalid || nombre_joueurs.invalid || theme.invalid || duree.invalid">
-    <div style="color: crimson">Le formulaire contient des erreurs.</div>
-  </div>
+  <button pButton type="submit" label="Valide" [disabled]="!formulaire.valid"></button>
 </form>

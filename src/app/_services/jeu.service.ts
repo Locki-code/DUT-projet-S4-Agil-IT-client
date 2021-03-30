@@ -29,7 +29,7 @@ export class JeuService {
         }),
       );
   }
-  getMecaniques(): Observable<Mecanique>{
+  getMecaniques(): Observable<Mecanique[]>{
     const url = 'http://127.0.0.1:8000/api/mecanics/';
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -45,7 +45,7 @@ export class JeuService {
       );
   }
 
-  getEditeurs(): Observable<Editeur>{
+  getEditeurs(): Observable<Editeur[]>{
     const url = 'http://127.0.0.1:8000/api/editeurs/';
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -61,7 +61,7 @@ export class JeuService {
       );
   }
 
-  getThemes(): Observable<Themes>{
+  getThemes(): Observable<Themes[]>{
     const url = 'http://127.0.0.1:8000/api/themes/';
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
