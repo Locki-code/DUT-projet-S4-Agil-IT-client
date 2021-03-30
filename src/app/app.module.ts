@@ -24,7 +24,6 @@ import { ListeJeuComponent } from './liste-jeu/liste-jeu.component';
 import {CardModule} from 'primeng/card';
 import {MenubarModule} from 'primeng/menubar';
 
-
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
