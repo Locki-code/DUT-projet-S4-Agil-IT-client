@@ -1,0 +1,22 @@
+
+<p-table [value]="jeux | async">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Nom</th>
+      <th>Date d'achat</th>
+      <th>Lieu d'achat</th>
+      <th>Prix</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-jeu>
+    <tr>
+      <td>{{jeu.jeu.nom}}</td>
+      <td>{{jeu.date_achat}}</td>
+      <td>{{jeu.lieu}}</td>
+      <td>{{jeu.prix}}</td>
+
+    </tr>
+  </ng-template>
+</p-table>
+
+

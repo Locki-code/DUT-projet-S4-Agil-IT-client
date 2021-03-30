@@ -51,6 +51,7 @@ export class AppComponent implements OnInit{
           {
             label: 'Mes jeux',
             icon: 'pi pi-fw pi-heart',
+            routerLink: ['/profile/jeux']
           },
         ]
       },
