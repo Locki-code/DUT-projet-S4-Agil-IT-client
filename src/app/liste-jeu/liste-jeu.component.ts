@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {JeuService} from '../_services/jeu.service';
 import {Jeu} from '../jeu/Jeu';
 import {Router} from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-liste-jeu',
@@ -13,6 +14,8 @@ export class ListeJeuComponent implements OnInit {
 
   jeux: Jeu = null;
   cols: any[];
+  sort: number = undefined;
+  iconTri = 'code';
 
   constructor(private router: Router,
               private jeuService: JeuService) {
@@ -29,7 +32,18 @@ export class ListeJeuComponent implements OnInit {
   }
 
   getJeux(): void {
-    this.jeuService.getJeux()
+    this.jeuService.getJeux(this.sort)
       .subscribe(jeux => this.jeux = jeux);
+  }
+
+  modifTri(): void {
+    if (this.sort === undefined) {
+      this.sort = 1;
+      this.iconTri = 'pi-sort-alpha-down';
+    } else if (this.sort === 1) {
+      this.sort = undefined;
+      this.iconTri = '';
+    }
+    this.getJeux();
   }
 }

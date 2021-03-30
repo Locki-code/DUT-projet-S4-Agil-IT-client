@@ -11,8 +11,14 @@ export class JeuService {
 
   constructor(private http: HttpClient) { }
 
-  getJeux(): Observable<Jeu>{
-    const url = 'http://127.0.0.1:8000/api/jeux/';
+  getJeux(sort?: number): Observable<Jeu>{
+    let params = '';
+    if (!!sort && sort === 1) {
+      params = '?sort=nom';
+    }
+
+    const url = `http://127.0.0.1:8000/api/jeux${params}`;
+    console.log(url);
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
@@ -27,3 +33,4 @@ export class JeuService {
       );
   }
 }
+

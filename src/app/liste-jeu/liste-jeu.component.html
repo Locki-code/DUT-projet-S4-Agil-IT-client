@@ -1,6 +1,7 @@
 <h1 class='center'>Jeux</h1>
 
-
+<button style="margin:20px " mat-raised-button (click)="modifTri()">
+  <i class="pi {{iconTri}}"></i>tri</button>
 <p-table [columns]="cols" [value]="jeux">
   <ng-template pTemplate="header" let-columns>
     <tr>
@@ -17,6 +18,3 @@
     </tr>
   </ng-template>
 </p-table>
-
-
-
