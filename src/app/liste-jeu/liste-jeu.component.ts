@@ -36,7 +36,7 @@ jeux : Jeu[];
       this.sort = undefined;
       this.iconTriName = '';
     }
-    this.jeux$ = this.jeuService.getJeux();
+    this.jeux$ = this.jeuService.getJeux(this.sort);
   }
   modifTriNote(): void {
     if (this.sort === undefined || this.sort === 1) {
@@ -47,6 +47,6 @@ jeux : Jeu[];
       this.sort = undefined;
       this.iconTriNote = '';
     }
-    this.jeux$ = this.jeuService.getJeux();
+    this.jeux$ = this.jeuService.getJeux(this.sort);
   }
 }
