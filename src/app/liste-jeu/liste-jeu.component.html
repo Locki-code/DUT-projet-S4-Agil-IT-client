@@ -1,7 +1,9 @@
 <h1 class='center'>Jeux</h1>
 
-<button style="margin:20px " mat-raised-button (click)="modifTri()">
-  <i class="pi {{iconTri}}"></i>tri</button>
+<button style="margin:20px " mat-raised-button (click)="modifTriName()">
+  <i class="pi {{iconTriName}}"></i> Tri par nom</button>
+<button style="margin:20px " mat-raised-button (click)="modifTriNote()">
+  <i class="pi {{iconTriNote}}"></i> Tri par note</button>
 <p-table [columns]="cols" [value]="jeux">
   <ng-template pTemplate="header" let-columns>
     <tr>

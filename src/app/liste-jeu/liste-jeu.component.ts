@@ -15,7 +15,8 @@ export class ListeJeuComponent implements OnInit {
   jeux: Jeu = null;
   cols: any[];
   sort: number = undefined;
-  iconTri = 'code';
+  iconTriName = '';
+  iconTriNote = '';
 
   constructor(private router: Router,
               private jeuService: JeuService) {
@@ -36,13 +37,25 @@ export class ListeJeuComponent implements OnInit {
       .subscribe(jeux => this.jeux = jeux);
   }
 
-  modifTri(): void {
-    if (this.sort === undefined) {
+  modifTriName(): void {
+    if (this.sort === undefined || this.sort === -1) {
       this.sort = 1;
-      this.iconTri = 'pi-sort-alpha-down';
+      this.iconTriName = 'pi-sort-alpha-down';
+      this.iconTriNote = '';
     } else if (this.sort === 1) {
       this.sort = undefined;
-      this.iconTri = '';
+      this.iconTriName = '';
+    }
+    this.getJeux();
+  }
+  modifTriNote(): void {
+    if (this.sort === undefined || this.sort === 1) {
+      this.sort = -1;
+      this.iconTriNote = 'pi-sort-numeric-down';
+      this.iconTriName = '';
+    } else if (this.sort === -1) {
+      this.sort = undefined;
+      this.iconTriNote = '';
     }
     this.getJeux();
   }

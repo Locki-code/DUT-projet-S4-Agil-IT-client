@@ -15,6 +15,8 @@ export class JeuService {
     let params = '';
     if (!!sort && sort === 1) {
       params = '?sort=nom';
+    }else if (!!sort && sort === -1) {
+      params = '?sort=note';
     }
 
     const url = `http://127.0.0.1:8000/api/jeux${params}`;
