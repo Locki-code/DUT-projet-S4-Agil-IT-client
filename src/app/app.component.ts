@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import * as moment from 'moment';
-import {MessageService} from 'primeng/api';
+import {MenuItem, MessageService} from 'primeng/api';
 import {AuthentificationService} from './_services/authentification.service';
 import {CardModule} from 'primeng/card';
 
@@ -9,11 +9,64 @@ import {CardModule} from 'primeng/card';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'ludotheque-client';
+  items: MenuItem[];
 
-constructor(public messageService: MessageService, public authService: AuthentificationService) {
-}
+  constructor(public messageService: MessageService, public authService: AuthentificationService) {
+  }
+
+  ngOnInit() {
+    this.items = [
+      {
+        label: 'File',
+        icon: 'pi pi-fw pi-file',
+        items: [
+          {
+            label: 'RO',
+            icon: 'pi pi-chart-line',
+            routerLink: ['/ro']
+          },
+          {
+            label: 'Delete',
+            icon: 'pi pi-fw pi-trash'
+          },
+          {
+            separator: true
+          },
+          {
+            label: 'Export',
+            icon: 'pi pi-fw pi-external-link'
+          }
+        ]
+      },
+      {
+        label: 'Utilisateur',
+        icon: 'pi pi-fw pi-user',
+        items: [
+          {
+            label: 'Profil',
+            icon: 'pi pi-fw pi-users',
+            routerLink: ['/profile']
+          },
+          {
+            label: 'Mes jeux',
+            icon: 'pi pi-fw pi-heart',
+          },
+        ]
+      },
+      {
+        label: 'Connexion',
+        icon: 'pi pi-fw pi-sign-in',
+        routerLink: ['/login']
+      },
+      {
+        label: 'Déconnexion',
+        icon: 'pi pi-fw pi-power-off',
+        command: event => this.logout(),
+      }
+    ];
+  }
 
   ngOnInit(): void {
   }

@@ -1,9 +1,16 @@
+<!--
+<p-menubar [model]="items">
+</p-menubar>
+-->
+<!--
 <ul>
-  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']">Login</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']">Profile</a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()">logout</button></li>
+  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']"></a></li>
+  <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']"></a></li>
+  <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()"></button></li>
   <li><a [routerLink]="['/ro']">Exo RO</a></li>
 </ul>
+-->
+
 <router-outlet></router-outlet>
 
 <p-toast position="top-right" key="main"></p-toast>
