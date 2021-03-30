@@ -34,5 +34,15 @@ export class JeuService {
         }),
       );
   }
+  getJeuById(id: number): Observable<Jeu> {
+    const url = 'http://localhost:8000/api/jeux/' + id;
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+    return this.http.get<any>(url, httpOptions)
+      .pipe(
+        map(res => res.data.item),
+      );
+  }
 }
 
