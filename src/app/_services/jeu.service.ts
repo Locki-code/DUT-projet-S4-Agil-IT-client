@@ -9,22 +9,31 @@ import {Jeu} from '../jeu/Jeu';
 })
 export class JeuService {
 
-  constructor(private http: HttpClient) { }
+  jeux: Jeu[];
 
-  getJeux(sort?: number): Observable<Jeu>{
-    let params = '';
-    if (!!sort && sort === 1) {
-      params = '?sort=nom';
-    }else if (!!sort && sort === -1) {
-      params = '?sort=note';
-    }
+  constructor(private http: HttpClient) {
+  }
 
-    const url = `http://127.0.0.1:8000/api/jeux${params}`;
-    console.log(url);
+  getJeux(): Observable<Jeu[]> {
+    const url = 'http://127.0.0.1:8000/api/jeux/';
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
+    return this.http.get<any>(url, httpOptions)
+      .pipe(
+        map(res => res.data.item),
+        catchError(err => {
+          console.log('Erreur http : ', err);
+          return of([]);
+        }),
+      );
+  }
 
+  getJeuById(id: number): Observable<Jeu> {
+    const url = 'http://localhost:8000/api/jeux/' + id;
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
     return this.http.get<any>(url, httpOptions)
       .pipe(
         map(res => res.data.item),
@@ -35,4 +44,3 @@ export class JeuService {
       );
   }
 }
-
