@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 export class ListeJeuComponent implements OnInit {
 
   jeux: Jeu = null;
+  cols: any[];
 
   constructor(private router: Router,
               private jeuService: JeuService) {
@@ -19,6 +20,12 @@ export class ListeJeuComponent implements OnInit {
 
   ngOnInit(): void {
     this.getJeux();
+    this.cols = [
+      { field: 'id', header: 'Identifiant' },
+      { field: 'nom', header: 'Nom' },
+      { field: 'nombre_joueurs', header: 'Nombre joueur' },
+      { field: 'duree', header: 'Durée' }
+    ];
   }
 
   getJeux(): void {
