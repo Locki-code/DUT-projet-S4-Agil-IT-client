@@ -1,0 +1,26 @@
+<h1 style="text-align: center">Ajouter un jeu à mes achats</h1>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="p-fluid">
+
+
+    <div class="p-field">
+      <label><strong>Veuillez saisir la date d'achat du jeu</strong></label>
+      <input id="date_achat" type="date" pInputText formControlName="date_achat">
+    </div>
+
+    <div class="p-field">
+      <label><strong>Veuillez saisir le lieu d'achat de votre jeu</strong></label>
+      <input id="lieu" type="text" pInputText formControlName="lieu" placeholder="Ex: Lens">
+    </div>
+
+    <div class="p-field">
+      <label><strong>Veuillez saisir le prix</strong></label>
+      <input id="prix" type="number" pInputText formControlName="prix" placeholder="Ex: 15.5">
+    </div>
+
+    <button id="button"> Valider </button>
+
+
+  </div>
+</form>

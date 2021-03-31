@@ -92,4 +92,24 @@ export class UserService {
   private stopRefreshTokenTimer(): void {
     clearTimeout(this.refreshTokenTimeout);
   }
+
+  // tslint:disable-next-line:variable-name
+  achatJeu(idUser: number, jeu_id: number, lieu: string, prix: number, date_achat: Date): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/users/` + idUser + '/achat', {lieu, prix, date_achat, jeu_id}, httpOptions)
+      .pipe(
+        tap(rep => console.log(rep)),
+        map(rep => {
+          const user = {...rep.data.user, jwtToken: rep.data.token};
+          console.log('User connected : ', user);
+          return user;
+        }),
+        shareReplay(),
+        catchError(err => {
+          console.log('erreur mec');
+          this.stopRefreshTokenTimer();
+          this.userSubject.next(ANONYMOUS_USER);
+          return throwError(console.log(err));
+          // return of('');
+        }));
+  }
 }

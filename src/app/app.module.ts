@@ -35,6 +35,7 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {PasswordModule} from 'primeng/password';
 import {DropdownModule} from 'primeng/dropdown';
 import { EditCommentaireComponent } from './edit-commentaire/edit-commentaire.component';
+import { AchatJeuComponent } from './achat-jeu/achat-jeu.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -50,6 +51,7 @@ registerLocaleData(localeFr, 'fr');
     ProfilEditComponent,
     RegisterComponent,
     EditCommentaireComponent,
+    AchatJeuComponent,
   ],
   imports: [
     BrowserModule,
