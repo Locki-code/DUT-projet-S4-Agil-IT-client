@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Commentaire} from '../jeu/Commentaire';
+import {Commentaire} from '../jeu/commentaire';
 import {BehaviorSubject, Observable, of, throwError} from 'rxjs';
 import {environment} from '../../environments/environment';
 import {catchError, map, shareReplay, tap} from 'rxjs/operators';

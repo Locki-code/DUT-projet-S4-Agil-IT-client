@@ -6,7 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {AuthentificationService} from './_services/authentification.service';
 import {MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
@@ -40,6 +40,10 @@ import {RatingModule} from 'primeng/rating';
 import {DialogModule} from 'primeng/dialog';
 import {CheckboxModule} from 'primeng/checkbox';
 import { SuppressionAchatJeuComponent } from './suppression-achat-jeu/suppression-achat-jeu.component';
+import {ButtonModule} from 'primeng/button';
+import { CreerJeuComponent } from './creer-jeu/creer-jeu.component';
+import {DropdownModule} from 'primeng/dropdown';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -49,6 +53,8 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     ProfileComponent,
     LpSolverTestComponent,
+    ListeJeuComponent,
+    CreerJeuComponent
     ListeJeuComponent,
     MesJeuxComponent,
     DetailJeuComponent,
@@ -70,6 +76,10 @@ registerLocaleData(localeFr, 'fr');
     ReactiveFormsModule,
     CardModule,
     MenubarModule,
+    TableModule,
+    ButtonModule,
+    DropdownModule,
+    FormsModule
     TableModule,
     ButtonModule,
     RippleModule,
