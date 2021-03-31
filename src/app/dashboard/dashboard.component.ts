@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {JeuService} from '../_services/jeu.service';
 import {Observable} from 'rxjs';
+import {Jeu} from '../jeu/jeu';
 
 class Jeux {
 }
@@ -12,8 +13,8 @@ class Jeux {
 })
 export class DashboardComponent implements OnInit {
 
-  jeux: Jeux[];
-  jeux$: Observable<Jeux[]>;
+  jeux: Jeu[] = [];
+  jeux$: Observable<Jeu[]>;
 
   responsiveOptions;
 
@@ -38,7 +39,17 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.jeux$ = this.jeuService.getJeux(1)
+    let cpt = 0;
+    this.jeux$ = this.jeuService.getJeux(1);
+    this.jeux$.forEach( jeux => {
+      jeux.map( jeu => {
+        if (cpt <= 4){
+          this.jeux.push(jeu);
+        }
+        cpt++;
+      });
+    });
+    console.log(this.jeux);
   }
 
 
