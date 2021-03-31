@@ -30,9 +30,9 @@ export class DetailJeuComponent implements OnInit {
   statistiques: Statistique;
   tarif: Tarif;
 
+  displayModal3: boolean;
   displayModal: boolean;
   displayModal2: boolean;
-  displayModal3: boolean;
 
   val = 1;
   loading: boolean;
@@ -142,5 +142,4 @@ export class DetailJeuComponent implements OnInit {
     const lien = ['/jeux'];
     this.router.navigate(lien);
   }
-
 }

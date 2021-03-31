@@ -42,6 +42,9 @@ import {CheckboxModule} from 'primeng/checkbox';
 import { SuppressionAchatJeuComponent } from './suppression-achat-jeu/suppression-achat-jeu.component';
 import { CreerJeuComponent } from './creer-jeu/creer-jeu.component';
 import { ModerationCommentaireComponent } from './moderation-commentaire/moderation-commentaire.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CarouselModule } from 'primeng/carousel';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -60,7 +63,9 @@ registerLocaleData(localeFr, 'fr');
     EditCommentaireComponent,
     AchatJeuComponent,
     SuppressionAchatJeuComponent,
-    ModerationCommentaireComponent
+    ModerationCommentaireComponent,
+    DashboardComponent
+
   ],
   imports: [
     BrowserModule,
@@ -84,7 +89,8 @@ registerLocaleData(localeFr, 'fr');
     DropdownModule,
     RatingModule,
     DialogModule,
-    CheckboxModule
+    CheckboxModule,
+    CarouselModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
