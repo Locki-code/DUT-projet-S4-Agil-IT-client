@@ -59,7 +59,16 @@
       </div>
     </div>
   </div>
-  <button id="button" [disabled]="!registerForm.valid"> Valider </button>
+    <div class="p-field">
+      <div class="form-group">
+          <input id="rgpd" type="checkbox" [(ngModel)]="theCheckbox"  data-md-icheck (change)="toggleVisibility($event)">
+          <label>En soumettant ce formulaire, j'accepte que les informations saisies dans ce formulaire soient utilisées, exploitées, traitées pour permettre de me recontacter, pour m’envoyer la newsletter, dans le cadre de la relation commerciale qui découle de cette prise de contact.</label>
+          <br>
+          <br>
+          <span *ngIf="!marked" style="color:red"><strong>** Vous devez accepter le RGPD pour vous inscrire</strong></span>
+      </div>
+    </div>
+  <button id="button" [disabled]="!registerForm.valid || !marked"> Valider </button>
 </form>
         <!-- </p-password>
        </div>
