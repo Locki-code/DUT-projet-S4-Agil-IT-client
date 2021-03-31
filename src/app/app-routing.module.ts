@@ -18,9 +18,9 @@ import {CreerJeuComponent} from './creer-jeu/creer-jeu.component';
 const routes: Routes = [
   {path: '', component: ListeJeuComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'jeux/creer', component: CreerJeuComponent},
   {path: 'jeux/:id', component: DetailJeuComponent},
   {path: 'inscription', component: RegisterComponent},
-  {path: 'jeux/creer', component: CreerJeuComponent},
   {path: 'jeux/edit/:id', component: EditCommentaireComponent},
   {path: 'jeux/delete/:id', component: SuppressionAchatJeuComponent},
   {path: 'profile', component: ProfileComponent},

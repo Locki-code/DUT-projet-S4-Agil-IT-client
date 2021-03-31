@@ -28,8 +28,19 @@ interface Duree {
 @Component({
   selector: 'app-creer-jeu',
   templateUrl: './creer-jeu.component.html',
-  styles: [
-  ]
+  styles: [`
+    #button{
+      background-color: #f7ba2a;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 12px;
+      border-radius: 5px;
+    }
+  `]
 })
 
 export class CreerJeuComponent implements OnInit {

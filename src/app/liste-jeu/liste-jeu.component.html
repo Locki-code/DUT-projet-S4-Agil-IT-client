@@ -1,4 +1,7 @@
-<h1 class='center'>Jeux</h1>
+<div>
+<h1 class='p-text-center'>Jeux</h1>
+<button pButton pRipple [style]="{'background-color': '#f7ba2a', 'border-color': '#f7ba2a', 'float': 'right'}" id="button" type="button" label="Créer un jeu" [routerLink]="['/jeux/creer']"></button>
+</div>
 
 <div class="p-fluid p-grid">
   <div class="p-field p-col-12 p-md-3">
@@ -69,6 +72,5 @@
     </tr>
   </ng-template>
 </p-table>
-<button type="button" pButton pRipple icon="pi pi-search" [routerLink]="['/jeux/creer']">Créer un jeu</button>
 
 
