@@ -70,8 +70,8 @@ export class UserService {
   }
   */
 
-  updateProfile(nom: string, prenom: string, pseudo: string, email: string): Observable<any> {
-    return this.http.put<any>(`${environment.apiUrl}/auth/login`, {nom, prenom, pseudo, email}, httpOptions)
+  updateProfile(id: number, pseudo: string, nom: string, prenom: string, email: string, _method: string): Observable<any> {
+    return this.http.put<any>(`${environment.apiUrl}/users/` + id, {pseudo, nom, prenom, email, _method}, httpOptions)
       .pipe(
         tap(rep => console.log(rep)),
         catchError(this.handleError<any>('updateProfile')),
