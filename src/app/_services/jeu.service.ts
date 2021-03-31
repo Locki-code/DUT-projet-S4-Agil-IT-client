@@ -84,11 +84,11 @@ export class JeuService {
   }
 
   // tslint:disable-next-line:variable-name
-  register(nom: string, description: string, theme: number, editeur: number, langue: string, age: string, poids: number, nombre_joueurs: number, categorie: string, duree: string, regles: string): Observable<any>{
+  register(nom: string, description: string, theme: number, editeur: number, langue: string, age: string, poids: number, nombre_joueurs: number, categorie: number, duree: string, regles: string): Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
-    return this.http.post<any>(`${environment.apiUrl}/jeux`, {nom, description, theme, editeur, langue, age, poids, nombre_joueurs, duree, regles, categorie}, httpOptions)
+    return this.http.post<any>(`${environment.apiUrl}/jeux`, {nom, description, theme, editeur, langue, age, poids, nombre_joueurs, categorie, duree, regles}, httpOptions)
       .pipe(
         tap(rep => console.log(rep)),
         map(rep => {

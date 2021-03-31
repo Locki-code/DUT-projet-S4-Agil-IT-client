@@ -51,7 +51,7 @@ export class CreerJeuComponent implements OnInit {
   loading = false;
   returnURL: string;
   mecaniques: Mecanique[] = [];
-  selectedMecanique: string;
+  selectedMecanique: number;
   editeurs: Editeur[] = [];
   selectedEditeur: number;
   themes: Theme[] = [];
@@ -138,10 +138,9 @@ export class CreerJeuComponent implements OnInit {
   }
   onSubmit() {
     // tslint:disable-next-line:no-console
-    console.info(this.formulaire.value);
     this.form = {...this.form, ...this.formulaire.value};
     this.loading = true;
-    this.serviceJeu.register(this.form.nom, this.form.description, +this.form.themes, +this.form.editeur, this.form.langue, String(this.form.age) + '', this.form.poids, this.form.nombre_joueurs, this.selectedMecanique, this.form.duree, this.form.regles)
+    this.serviceJeu.register(this.form.nom, this.form.description, this.selectedTheme, +this.form.editeur, this.form.langue, String(this.form.age) + '', this.form.poids, this.form.nombre_joueurs, this.selectedMecanique, this.form.duree, this.form.regles)
       .pipe(first())
       .subscribe(
         () => {
@@ -182,5 +181,4 @@ export class CreerJeuComponent implements OnInit {
         });
       });
   }
-
 }

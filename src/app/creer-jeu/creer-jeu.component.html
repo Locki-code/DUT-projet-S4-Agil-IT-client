@@ -34,7 +34,7 @@
   <div class="p-formgroup-inline">
     <div class="p-field">Langue
       <label for="langue" class="p-sr-only">Langue</label>
-      <p-dropdown id="langue" name="langue"  optionLabel="langue" optionValue="langue" [options]="langues" formControlName="langue"></p-dropdown>
+      <p-dropdown placeholder="Langue" id="langue" name="langue"  optionLabel="langue" optionValue="langue" [options]="langues" formControlName="langue"></p-dropdown>
       <div *ngIf="langue.invalid && (langue.dirty || langue.touched)" class="mat-error">
         <div *ngIf="langue?.errors.required" style="color: crimson">La langue du jeu est obligatoire</div>
     </div>
@@ -77,7 +77,7 @@
         <div class="p-formgroup-inline">
           <div class="p-field">Thème
             <label for="theme" class="p-sr-only">Thème</label>
-            <p-dropdown placeholder="Theme"  id="theme" name="theme" optionLabel="nom" optionValue="id" [options]="themes" [(ngModel)]="selectedTheme" formControlName="theme"></p-dropdown>
+            <p-dropdown placeholder="Theme" id="theme" name="theme" optionLabel="nom" optionValue="id" [options]="themes" [(ngModel)]="selectedTheme" formControlName="theme"></p-dropdown>
             <div *ngIf="theme.invalid && (theme.dirty || theme.touched)" class="mat-error">
               <div *ngIf="theme?.errors.required" style="color: crimson">Le thème est obligatoire</div>
             </div>
@@ -86,7 +86,7 @@
           <div class="p-formgroup-inline">
             <div class="p-field">Durée
               <label for="duree" class="p-sr-only">Durée</label>
-              <p-dropdown id="duree" name="duree"  optionLabel="duree" optionValue="duree" [options]="durees" formControlName="duree"></p-dropdown>
+              <p-dropdown placeholder="Durée" id="duree" name="duree"  optionLabel="duree" optionValue="duree" [options]="durees" formControlName="duree"></p-dropdown>
               <div *ngIf="duree.invalid && (duree.dirty || duree.touched)" class="mat-error">
                 <div *ngIf="duree?.errors.required" style="color: crimson">La durée du jeu est obligatoire</div>
               </div>
@@ -110,8 +110,9 @@
                   placeholder="Theme" id="mecanique"
                   name="mecanique">
       </p-dropdown-->
-      <p-dropdown id="mecanique" name="mecanique"  optionLabel="nom" optionValue="nom"
-                  [options]="mecaniques" [(ngModel)]="selectedMecanique"
+      <p-dropdown id="mecanique" name="mecanique"  optionLabel="nom"
+                  [options]="mecaniques" optionValue="nom"
+                  [(ngModel)]="selectedMecanique"
                   formControlName="mecanique" placeholder="Mecanique" ></p-dropdown>
       <div *ngIf="mecanique.invalid && (mecanique.dirty || mecanique.touched)" class="mat-error">
         <div *ngIf="mecanique?.errors.required" style="color: crimson">La mécanique du jeu est obligatoire</div>
@@ -120,4 +121,4 @@
   </div>
   <button pButton type="submit" label="Valide" [disabled]="!formulaire.valid"></button>
 </form>
-<p>{{this.selectedMecanique}}</p>
+<p>{{this.selectedTheme}}</p>
