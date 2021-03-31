@@ -6,6 +6,10 @@ import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {Commentaire} from '../jeu/Commentaire';
 import {TriCommentaireService} from '../_services/tri-commentaire.service';
+import {first} from 'rxjs/operators';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
+import {UserInfo} from '../_models/user-info';
+import {Mecanic} from "../_models/mecanic";
 
 @Component({
   selector: 'app-detail-jeu',
@@ -18,6 +22,22 @@ export class DetailJeuComponent implements OnInit {
   comm: Commentaire[];
   jeux$: Observable<Jeu[]>;
   sort: number = undefined;
+  val = 1;
+  loading: boolean;
+  user: UserInfo;
+  error = '';
+  jeu_id: number;
+  mecanic: Mecanic[];
+
+  form: any = {
+  };
+  returnUrl: string;
+
+  formulaire = new FormGroup({
+    note: new FormControl('', [Validators.required, Validators.minLength(1)]),
+    commentaire: new FormControl('', [Validators.required, Validators.minLength(2)])
+  });
+
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -27,18 +47,28 @@ export class DetailJeuComponent implements OnInit {
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id');
+    this.jeu_id = +this.route.snapshot.paramMap.get('id');
     this.jeuService.getJeuById(id).subscribe(
       val => {
         this.jeux = val;
       }
     );
     this.jeux$ = this.jeuService.getJeux();
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+    this.loading = true;
+
   }
 
-  Modifier(jeux: Commentaire): void {
+  ModifierComm(jeux: Commentaire): void {
     const link = ['/jeux/edit', jeux.id];
     this.router.navigate(link);
   }
+
+  /*AjouterComm(jeux: Commentaire): void {
+    const link = ['/jeux/edit', jeux.id];
+    this.router.navigate(link);
+  }*/
+
 
   TriDateComm(commentaires: Commentaire[]): void {
     if (this.sort === undefined || this.sort === -1) {
@@ -49,11 +79,43 @@ export class DetailJeuComponent implements OnInit {
     this.comm = this.triCommentaireService.getCommByDate( commentaires, this.sort);
   }
 
-  /*getMoyenneNoteById(id: number): number {
-    const nt = this.jeux.commentaires.find(n => n.id === id);
-    let moyenne = 0;
-    nt.jeux.note.forEach(j => moyenne += +j.commentaires.note);
-    return moyenne;
-  }*/
+
+  get note(): AbstractControl {
+    return this.formulaire.get('note');
+  }
+
+  get commentaire(): AbstractControl {
+    return this.formulaire.get('commentaire');
+  }
+
+
+  get date_com(): Date {
+    return new Date();
+  }
+
+
+  // tslint:disable-next-line:typedef
+  onSubmit() {
+    this.form = {...this.form, ...this.formulaire.value};
+    this.loading = true;
+    console.log(this.jeu_id);
+    this.triCommentaireService.ajouterComm(this.form.note, this.form.commentaire, this.jeu_id , this.date_com)
+      .pipe(first())
+      .subscribe(
+        () => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          console.log('Erreur: ', error);
+          this.loading = false;
+        }
+      );
+    console.log(this.formulaire.value);
+  }
+
+  goBack(): void{
+    const lien = ['/jeux'];
+    this.router.navigate(lien);
+  }
 
 }

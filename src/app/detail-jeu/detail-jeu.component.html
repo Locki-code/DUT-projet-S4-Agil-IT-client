@@ -1,43 +1,67 @@
 <p-card header="{{jeux.nom}}" subheader="{{jeux.nombre_joueurs}} joueurs" [style]="{width: '25rem', 'margin': '0 auto', 'border':' 1px solid','margin-top':'3em','margin-bottom':'3em'}" styleClass="p-card-shadow">
   <ng-template pTemplate="header">
     <img alt="Card" src="{{jeux.url_media}}">
-
   </ng-template>
   <hr/>
-  <p><strong>Identifiant :</strong>{{jeux.id}}</p>
-  <p><strong>Description :</strong>{{jeux.description}}</p>
-  <p><strong>Editeur :</strong>{{jeux.editeur_id.nom}}</p>
-  <p><strong>Langues :</strong>{{jeux.langue}}</p>
-  <p><strong>Theme :</strong>{{jeux.theme_id.nom}}</p>
-  <p><strong>Durée :</strong>{{jeux.duree}}</p>
+  <p><strong>Identifiant : </strong>{{jeux.id}}</p>
+  <p><strong>Description : </strong>{{jeux.description}}</p>
+  <p><strong>Editeur : </strong>{{jeux.editeur_id.nom}}</p>
+  <p><strong>Langues : </strong>{{jeux.langue}}</p>
+  <p><strong>Theme : </strong>{{jeux.theme_id.nom}}</p>
+  <p><strong>Durée : </strong>{{jeux.duree}}</p>
+  <!--<p *ngFor="let meca of jeux.mecanic"><strong>Mécanique :</strong>{{meca.nom}}</p>-->
+  <p><strong>Age : +</strong>{{jeux.age}}</p>
+  <p><strong>Categorie : </strong>{{jeux.categorie}}</p>
+  <p><strong>Poid : </strong>{{jeux.poids}}</p>
+  <p><strong>Nombre de joueurs : </strong>{{jeux.nombre_joueurs}}</p>
   <ng-template pTemplate="footer">
-    <p><strong>Regles :</strong>{{jeux.regles}}</p>
-
+    <p><strong>Regles : </strong>{{jeux.regles}}</p>
   </ng-template>
 </p-card>
-<button pButton type="button" icon="pi pi-check" iconPos="left" (click)="TriDateComm(jeux.commentaires)"></button>
+<h2 class="p-text-center"> Ajout de commentaire </h2>
+
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+  <div class="p-fluid">
+    <div class="p-field">
+      <h5>Note</h5>
+      <p-rating id="note" type="number" formControlName="note" [(ngModel)]="val" [cancel]="false"></p-rating>
+      <div *ngIf="note.invalid && (note.dirty || note.touched)" class="invalid-feedback">
+        <div *ngIf="note.errors.required" style="color:#ee7f01">La note est obligatoire</div>
+        <div *ngIf="note.errors.minlength"  style="color:#ee7f01">La note doit être comprise entre 0 et 5</div>
+      </div>
+    </div>
+    <div class="p-field">
+      <input id="commentaire" type="text" pInputText formControlName="commentaire" placeholder="Veuillez saisir votre commentaire">
+      <div *ngIf="commentaire.invalid && (commentaire.dirty || commentaire.touched)" class="invalid-feedback">
+        <div *ngIf="commentaire.errors.required" style="color:#ee7f01">Le commentaire est obligatoire</div>
+        <div *ngIf="commentaire.errors.minlength"  style="color:#ee7f01">Le commentaire doit comporter au moins deux caractères</div>
+      </div>
+    </div>
+  </div>
+  <button id="button">Valider</button>
+</form>
 <p-table>
   <ng-template pTemplate="header">
     <tr>
       <th>Identifiant commentaire</th>
       <th>Commentaire</th>
-      <th>Date commentaire</th>
+      <th>Date commentaire<button pButton type="button" icon="pi pi-sort" iconPos="left" style="background-color: #f7ba2a" (click)="TriDateComm(jeux.commentaires)"></button></th>
       <th>note</th>
       <th>Identifiant Utilisateur</th>
       <th>Modification</th>
     </tr>
   </ng-template>
   </p-table>
-  <div *ngFor="let comm of jeux.commentaires">
+<div *ngFor="let comm of jeux.commentaires">
     <p-table>
       <ng-template pTemplate="footer">
         <tr>
           <td>{{comm.id}}</td>
           <td>{{comm.commentaire}}</td>
           <td>{{comm.date_com | date:'dd.MM.yyyy H:mm'}}</td>
-          <td>{{comm.note}}</td>
+          <td><p-rating [(ngModel)]="comm.note" [iconOnStyle]="{'color':'#f7ba2a'}" readonly="true" stars="5" style="color: yellow" [cancel]="false"></p-rating></td>
           <td>{{comm.user_id}}</td>
-          <td><button pButton type="button" icon="pi pi-user-edit" iconPos="left" (click)="Modifier(comm)"></button></td>
+          <td><button pButton type="button" icon="pi pi-user-edit" iconPos="left" style="background-color: #f7ba2a" (click)="ModifierComm(comm)"></button></td>
         </tr>
       </ng-template>
     </p-table>
