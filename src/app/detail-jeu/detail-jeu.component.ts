@@ -53,7 +53,7 @@ export class DetailJeuComponent implements OnInit {
     this.comm = this.triCommentaireService.getCommByDate( commentaires, this.sort);
   }
 
-  showModalDialog() {
+  showModalDialog(): void {
     this.displayModal = true;
   }
 
