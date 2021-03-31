@@ -18,13 +18,21 @@
 <p-button (click)="showModalDialog()" icon="pi pi-chart-bar" label="Statistiques du jeu"></p-button>
 <p-dialog header="Statistiques du jeu" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw', 'background-color': '#f7ba2a'}" [baseZIndex]="10000"
           [draggable]="false" [resizable]="false">
-      <p class="p-m-0">Note moyenne du jeu : {{jeux.statistiques.noteMoyenne}}</p>
-      <p class="p-m-0">Note la plus haute : {{jeux.statistiques.noteMax}}</p>
-      <p class="p-m-0">Note la plus basse : {{jeux.statistiques.noteMin}}</p>
-      <p class="p-m-0">Nombre de commentaires pour ce jeu : {{jeux.statistiques.nbCommentaires}}</p>
-      <p class="p-m-0">Nombre de commentaires pour tous les jeux : {{jeux.statistiques.nbCommentairesTotal}}</p>
-      <p class="p-m-0">Classement de ce jeu : {{jeux.statistiques.rang}}</p>
-      <p class="p-m-0">Classement de ce jeu dans l'ensemble des jeux ayant le même thème : {{jeux.statistiques.nbJeuxTheme}}</p>
+  <p-fieldset [style]="{'background-color': '#DCDCDC'}" legend="Les notes du jeu" >
+      <p class="p-m-0"> La moyenne : {{jeux.statistiques.noteMoyenne}}</p>
+      <p class="p-m-0"> La plus haute : {{jeux.statistiques.noteMax}}</p>
+      <p class="p-m-0"> La plus basse : {{jeux.statistiques.noteMin}}</p>
+  </p-fieldset>
+  <br/>
+  <p-fieldset [style]="{'background-color': '#DCDCDC'}" legend="Le nombre de commentaires">
+      <p class="p-m-0"> Pour ce jeu : {{jeux.statistiques.nbCommentaires}}</p>
+      <p class="p-m-0"> Pour tous les jeux : {{jeux.statistiques.nbCommentairesTotal}}</p>
+  </p-fieldset>
+  <br/>
+  <p-fieldset [style]="{'background-color': '#DCDCDC'}" legend="Le classement">
+      <p class="p-m-0"> De ce jeu : {{jeux.statistiques.rang}}</p>
+      <p class="p-m-0"> De ce jeu dans l'ensemble des jeux ayant le même thème : {{jeux.statistiques.nbJeuxTheme}}</p>
+  </p-fieldset>
   <ng-template pTemplate="footer">
     <p-button icon="pi pi-check" (click)="displayModal=false"  label="Ok" styleClass="p-button-text"></p-button>
   </ng-template>
