@@ -1,0 +1,14 @@
+#button{
+  background-color: #f7ba2a;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 15px;
+  border-radius: 10px;
+}
+
+#check{
+  margin-top : 25px;
+}

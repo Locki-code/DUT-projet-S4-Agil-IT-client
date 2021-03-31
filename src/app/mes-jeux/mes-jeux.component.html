@@ -1,7 +1,17 @@
+<br/>
+<form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
+  <div class="p-field p-col-12 p-md-4">
+        <span class="p-float-label">
+            <input type="number" id="poids" formControlName="poids" placeholder="Entrer le poids du colis (kg)" pInputText>
+        </span>
+  </div>
+<button id="button" [disabled]="!formulaire.valid"> Résolution </button>
+</form>
 
 <p-table [value]="jeux | async">
   <ng-template pTemplate="header">
     <tr>
+      <th width="10px"></th>
       <th>Nom</th>
       <th>Date d'achat</th>
       <th>Lieu d'achat</th>
@@ -11,12 +21,12 @@
   </ng-template>
   <ng-template pTemplate="body" let-jeu>
     <tr>
+      <input type="checkbox" [id]="jeu.jeu.id" [value]="jeu" (change)="onCheckChange($event, jeu)">
       <td>{{jeu.jeu.nom}}</td>
       <td>{{jeu.date_achat}}</td>
       <td>{{jeu.lieu}}</td>
       <td>{{jeu.prix}}</td>
       <td><button type="button" pButton pRipple icon="pi pi-exclamation-circle" [routerLink]="['/jeux', jeu.id]"></button></td>
-
     </tr>
   </ng-template>
 </p-table>

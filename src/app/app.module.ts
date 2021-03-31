@@ -35,6 +35,7 @@ import {FieldsetModule} from 'primeng/fieldset';
 import {PasswordModule} from 'primeng/password';
 import {DropdownModule} from 'primeng/dropdown';
 import { EditCommentaireComponent } from './edit-commentaire/edit-commentaire.component';
+import {CheckboxModule} from 'primeng/checkbox';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -70,7 +71,8 @@ registerLocaleData(localeFr, 'fr');
     FieldsetModule,
     PasswordModule,
     FormsModule,
-    DropdownModule
+    DropdownModule,
+    CheckboxModule,
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

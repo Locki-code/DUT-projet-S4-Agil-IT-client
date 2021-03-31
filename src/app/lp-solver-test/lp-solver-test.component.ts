@@ -9,35 +9,40 @@ declare var solver: any;
   styleUrls: ['./lp-solver-test.component.css']
 })
 export class LpSolverTestComponent implements OnInit {
-
-
   readonly probleme = {
     variables: {
       s1: {
         p1: 12,
-        p2: 11,
-        p3: 7,
-        p4: 25,
-        p5: 10,
-        p6: 5
+        benefice: 10
       },
       s2: {
+        p1: 11,
+        benefice: 10
+      },
+      s3: {
+        p1: 7,
+        benefice: 15
+      },
+      s4: {
+        p1: 25,
+        benefice: 32
+      },
+      s5: {
         p1: 10,
-        p2: 10,
-        p3: 15,
-        p4: 32,
-        p5: 7,
-        p6: 7
+        benefice: 7
+      },
+      s6: {
+        p1: 5,
+        benefice: 7
       },
     },
-    ints: {s1: 1, s2: 1},
-    binaries: {},
+    ints: {},
+    binaries: {s1: 1, s2: 1, s3: 1, s4: 1, s5: 1, s6: 1},
     constraints: {
-      s1: {max: 40},
-      s2: {max: 6},
+      p1: {max: 40},
     },
     opType: 'max',
-    optimize: 'o1'
+    optimize: 'benefice'
   };
 
   constructor(public messageService: MessageService) {
@@ -49,10 +54,15 @@ export class LpSolverTestComponent implements OnInit {
   resolutionProbleme(): void {
     const resultat = solver.Solve(this.probleme);
     console.log(resultat);
-    const nbS1 = resultat.s1;
-    const nbS2 = resultat.s2;
+    let message = '';
+    if (resultat.s1) { message += 'Objet 1, '; }
+    if (resultat.s2) { message += 'Objet 2, '; }
+    if (resultat.s3) { message += 'Objet 3, '; }
+    if (resultat.s4) { message += 'Objet 4, '; }
+    if (resultat.s5) { message += 'Objet 5, '; }
+    if (resultat.s6) { message += 'Objet 6 '; }
     const beneficeTotal = resultat.result;
-    const affiche = `Solution : Poids :  ${nbS1}, Prix total : ${nbS2}`;
+    const affiche = `Solution : Poids :  ${message}, Bénéfice: ${beneficeTotal}`;
     this.messageService.add({
       key: 'main',
       severity: 'info',
