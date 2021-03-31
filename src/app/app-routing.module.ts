@@ -11,20 +11,17 @@ import {RegisterComponent} from './register/register.component';
 import { EditCommentaireComponent } from './edit-commentaire/edit-commentaire.component';
 import {AchatJeuComponent} from './achat-jeu/achat-jeu.component';
 
-
-
 const routes: Routes = [
   {path: '', component: ListeJeuComponent},
   {path: 'login', component: LoginComponent},
   {path: 'jeux/:id', component: DetailJeuComponent},
-  {path: 'inscription', component: RegisterComponent},
   {path: 'jeux/edit/:id', component: EditCommentaireComponent},
+  {path: 'inscription', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'profile/jeux', component: MesJeuxComponent},
   {path: 'profile/edit', component: ProfilEditComponent},
   {path: 'profile/achat/:id', component: AchatJeuComponent},
   {path: 'ro', component: LpSolverTestComponent},
-
 ];
 
 @NgModule({

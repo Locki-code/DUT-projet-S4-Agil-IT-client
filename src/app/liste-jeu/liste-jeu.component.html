@@ -6,7 +6,7 @@
                 (onChange)="selectFilterNbJoueur()"
                 [(ngModel)]="selectedNbJoueur"
                 optionLabel="nbJoueurs" class="ng-invalid ng-dirty"
-                placeholder="Nombre de joueur minimum">
+                placeholder="Nombre de joueur maximum">
     </p-dropdown>
   </div>
   <div class="p-field p-col-12 p-md-3">
@@ -22,7 +22,7 @@
                 (onChange)="selectFilterAge()"
                 [(ngModel)]="selectedAge"
                 optionLabel="age" class="ng-invalid ng-dirty"
-                placeholder="Age minimum">
+                placeholder="Age maximum">
     </p-dropdown>
   </div>
   <div class="p-field p-col-12 p-md-3">
@@ -38,6 +38,8 @@
   <i class="pi {{iconTriName}}"></i> Tri par nom</button>
 <button style="margin:20px " (click)="modifTriNote()">
   <i class="pi {{iconTriNote}}"></i> Tri par note</button>
+<button style="margin:20px " (click)="bestGame()">
+  <i class="pi {{iconTriBest}}"></i> Tri par note</button>
 <p-table [value]="jeux$ | async">
   <ng-template pTemplate="header">
     <tr>

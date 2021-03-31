@@ -35,6 +35,7 @@ export class ListeJeuComponent implements OnInit {
   sort: number = undefined;
   iconTriName = '';
   iconTriNote = '';
+  iconTriBest = '';
 
   constructor(private router: Router,
               private jeuService: JeuService) {
@@ -67,11 +68,14 @@ export class ListeJeuComponent implements OnInit {
   modifTriName(): void {
     if (this.sort ===  -1) {
       this.sort = undefined;
+      this.iconTriName = '';
     }else {
       this.selectedEditeur = null;
       this.selectedTheme = null;
       this.selectedAge = null;
       this.selectedNbJoueur = null;
+      this.iconTriNote = '';
+      this.iconTriBest = 'pi-star-o';
       this.sort = -1;
     }
     this.jeux$ = this.jeuService.getJeux(this.sort);
@@ -79,11 +83,14 @@ export class ListeJeuComponent implements OnInit {
   modifTriNote(): void {
     if (this.sort ===  1) {
       this.sort = undefined;
+      this.iconTriNote = '';
     }else {
       this.selectedEditeur = null;
       this.selectedTheme = null;
       this.selectedAge = null;
       this.selectedNbJoueur = null;
+      this.iconTriName = '';
+      this.iconTriBest = 'pi-star-o';
       this.sort = 1;
       }
     this.jeux$ = this.jeuService.getJeux(this.sort);
@@ -93,6 +100,7 @@ export class ListeJeuComponent implements OnInit {
     this.sort = undefined;
     this.iconTriNote = '';
     this.iconTriName = '';
+    this.iconTriBest = 'pi-star-o';
     this.selectedEditeur = null;
     this.selectedTheme = null;
     this.selectedAge = null;
@@ -103,6 +111,7 @@ export class ListeJeuComponent implements OnInit {
     this.sort = undefined;
     this.iconTriNote = '';
     this.iconTriName = '';
+    this.iconTriBest = 'pi-star-o';
     this.selectedEditeur = null;
     this.selectedNbJoueur = null;
     this.selectedAge = null;
@@ -113,6 +122,7 @@ export class ListeJeuComponent implements OnInit {
     this.sort = undefined;
     this.iconTriNote = '';
     this.iconTriName = '';
+    this.iconTriBest = 'pi-star-o';
     this.selectedEditeur = null;
     this.selectedTheme = null;
     this.selectedNbJoueur = null;
@@ -123,10 +133,27 @@ export class ListeJeuComponent implements OnInit {
     this.sort = undefined;
     this.iconTriNote = '';
     this.iconTriName = '';
+    this.iconTriBest = 'pi-star-o';
     this.selectedTheme = null;
     this.selectedNbJoueur = null;
     this.selectedAge = null;
     this.sort = 5;
     this.jeux$ = this.jeuService.getJeux(this.sort, this.selectedEditeur.id);
+  }
+  bestGame(): void{
+    if (this.sort ===  6) {
+      this.sort = undefined;
+      this.iconTriBest = 'pi-star-o';
+    }else {
+      this.selectedEditeur = null;
+      this.selectedTheme = null;
+      this.selectedAge = null;
+      this.selectedNbJoueur = null;
+      this.iconTriNote = '';
+      this.iconTriName = '';
+      this.iconTriBest = 'pi-star';
+      this.sort = 6;
+    }
+    this.jeux$ = this.jeuService.getJeux(this.sort);
   }
 }

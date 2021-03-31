@@ -27,6 +27,8 @@ export class JeuService {
       params = '?age=' + nb;
     }else if (!!sort && sort === 5) {
       params = '?editeur=' + nb;
+    }else if (!!sort && sort === 6) {
+      params = '?sort=note';
     }
 
     const url = `http://127.0.0.1:8000/api/jeux${params}`;
