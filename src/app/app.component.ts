@@ -23,6 +23,11 @@ export class AppComponent implements OnInit{
         routerLink: ['/']
       },
       {
+        label: 'Les 5 meilleurs jeux',
+        icon: 'pi pi-star',
+        routerLink: ['/dashboard']
+      },
+      {
         label: 'RO',
         icon: 'pi pi-chart-line',
         routerLink: ['/ro']
