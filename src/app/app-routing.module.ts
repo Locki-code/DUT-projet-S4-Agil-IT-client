@@ -10,6 +10,7 @@ import {ProfilEditComponent} from './profil-edit/profil-edit.component';
 import {RegisterComponent} from './register/register.component';
 import { EditCommentaireComponent } from './edit-commentaire/edit-commentaire.component';
 import {AchatJeuComponent} from './achat-jeu/achat-jeu.component';
+import {SuppressionAchatJeuComponent} from './suppression-achat-jeu/suppression-achat-jeu.component';
 
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'jeux/:id', component: DetailJeuComponent},
   {path: 'inscription', component: RegisterComponent},
   {path: 'jeux/edit/:id', component: EditCommentaireComponent},
+  {path: 'jeux/delete/:id', component: SuppressionAchatJeuComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'profile/jeux', component: MesJeuxComponent},
   {path: 'profile/edit', component: ProfilEditComponent},

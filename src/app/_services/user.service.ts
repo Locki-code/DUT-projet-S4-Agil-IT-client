@@ -112,4 +112,26 @@ export class UserService {
           // return of('');
         }));
   }
+
+  // tslint:disable-next-line:variable-name
+  suppressionJeu(idUser: number, jeu_id: number): Observable<any> {
+    console.log('idUser: ' + idUser);
+    console.log('jeu_id' + jeu_id);
+    return this.http.post<any>(`${environment.apiUrl}/users/` + 1 + '/vente', {jeu_id}, httpOptions)
+      .pipe(
+        tap(rep => console.log(rep)),
+        map(rep => {
+          const user = {...rep.data.user, jwtToken: rep.data.token};
+          console.log('User connected : ', user);
+          return user;
+        }),
+        shareReplay(),
+        catchError(err => {
+          console.log('erreur mec');
+          this.stopRefreshTokenTimer();
+          this.userSubject.next(ANONYMOUS_USER);
+          return throwError(console.log(err));
+          // return of('');
+        }));
+  }
 }
