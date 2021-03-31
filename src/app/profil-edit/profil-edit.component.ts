@@ -3,7 +3,8 @@ import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/form
 import {Router} from '@angular/router';
 import {ProfileComponent} from '../profile/profile.component';
 import {UserService} from '../_services/user.service';
-import {UserInfo} from '../_models/user-info';
+import {first} from 'rxjs/operators';
+import {AuthentificationService} from '../_services/authentification.service';
 
 @Component({
   selector: 'app-profil-edit',
@@ -13,14 +14,22 @@ import {UserInfo} from '../_models/user-info';
 export class ProfilEditComponent implements OnInit {
   @Input() profil: ProfileComponent;
 
-  formulaire = new FormGroup({
-    nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    prenom: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    email: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')]),
-  });
-  private users: UserInfo;
+  form: any = {
+    prenom: null,
+    nom: null,
+    pseudo: null,
+    email: null,
+  };
+  returnUrl: string;
 
-  constructor(private userService: UserService, private router: Router) { }
+  formulaire = new FormGroup({
+    prenom: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    pseudo: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+  });
+
+  constructor(private userService: UserService, private router: Router, private authService: AuthentificationService) { }
 
   ngOnInit(): void {
   }
@@ -34,15 +43,29 @@ export class ProfilEditComponent implements OnInit {
     return this.formulaire.get('prenom');
   }
 
+  get pseudo(): AbstractControl {
+    return this.formulaire.get('pseudo');
+  }
+
   get email(): AbstractControl {
     return this.formulaire.get('email');
   }
 
-  // tslint:disable-next-line:typedef
+
+  // tslint:disable-next-line:typedefs
   onSubmit() {
+    this.form = {...this.form, ...this.formulaire.value};
+    this.userService.updateProfile(this.form.nom, this.form.prenom, this.form.pseudo, this.form.email)
+      .pipe(first())
+      .subscribe(
+        () => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          console.log('Erreur: ', error);
+        }
+      );
     console.log(this.formulaire.value);
-    this.userService.updateProfile(this.users)
-      .subscribe(() => this.goBack());
   }
 
   goBack(): void{

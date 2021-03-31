@@ -1,10 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Observable, of, throwError} from 'rxjs';
+import {BehaviorSubject, Observable, of, throwError} from 'rxjs';
 import {UserInfo} from '../_models/user-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Jeu} from '../jeu/Jeu';
-import {catchError, map, tap} from 'rxjs/operators';
+import {catchError, map, shareReplay, tap} from 'rxjs/operators';
+import {ANONYMOUS_USER} from "./authentification.service";
+import {User} from "../_models/user";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -14,6 +16,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UserService {
+  private refreshTokenTimeout;
+  private userSubject: BehaviorSubject<User> = new BehaviorSubject<User>(ANONYMOUS_USER);
   private userUrl = 'api/users/id';
 
   // tslint:disable-next-line:typedef
@@ -57,11 +61,35 @@ export class UserService {
         }),
       );
   }
-
-  updateProfile(users: UserInfo): Observable < UserInfo > {
+  /*
+  updateProfile(nom: string, prenom: string, pseudo: string, email: string) {
     return this.http.put(this.userUrl, users, httpOptions).pipe(
       tap(_ => this.log(`updates users id=${users.id}`)),
       catchError(this.handleError<any>('updateProfile'))
     );
+  }
+  */
+
+  updateProfile(nom: string, prenom: string, pseudo: string, email: string): Observable<any> {
+    return this.http.put<any>(`${environment.apiUrl}/auth/login`, {nom, prenom, pseudo, email}, httpOptions)
+      .pipe(
+        tap(rep => console.log(rep)),
+        catchError(this.handleError<any>('updateProfile')),
+        map(rep => {
+          const user = {...rep.data.user, jwtToken: rep.data.token};
+          console.log('User connected : ', user);
+          return user;
+        }),
+        shareReplay(),
+        catchError(err => {
+          this.stopRefreshTokenTimer();
+          this.userSubject.next(ANONYMOUS_USER);
+          return throwError(console.log(err));
+          // return of('');
+        }));
+  }
+
+  private stopRefreshTokenTimer(): void {
+    clearTimeout(this.refreshTokenTimeout);
   }
 }
