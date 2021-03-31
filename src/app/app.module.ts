@@ -41,6 +41,7 @@ import {DialogModule} from 'primeng/dialog';
 import {CheckboxModule} from 'primeng/checkbox';
 import { SuppressionAchatJeuComponent } from './suppression-achat-jeu/suppression-achat-jeu.component';
 import { CreerJeuComponent } from './creer-jeu/creer-jeu.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -58,7 +59,8 @@ registerLocaleData(localeFr, 'fr');
     RegisterComponent,
     EditCommentaireComponent,
     AchatJeuComponent,
-    SuppressionAchatJeuComponent
+    SuppressionAchatJeuComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
