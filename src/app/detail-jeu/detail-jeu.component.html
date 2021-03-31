@@ -5,9 +5,9 @@
   <hr/>
   <p><strong>Identifiant : </strong>{{jeux.id}}</p>
   <p><strong>Description : </strong>{{jeux.description}}</p>
-  <p><strong>Editeur : </strong>{{jeux.editeur_id.nom}}</p>
+  <p><strong>Editeur : </strong>{{jeux.editeur_id}}</p>
   <p><strong>Langues : </strong>{{jeux.langue}}</p>
-  <p><strong>Theme : </strong>{{jeux.theme_id.nom}}</p>
+  <p><strong>Theme : </strong>{{jeux.theme_id}}</p>
   <p><strong>Durée : </strong>{{jeux.duree}}</p>
   <!--<p *ngFor="let meca of jeux.mecanic"><strong>Mécanique :</strong>{{meca.nom}}</p>-->
   <p><strong>Age : +</strong>{{jeux.age}}</p>
@@ -59,29 +59,36 @@
 </p-dialog>
 
 <button pButton type="button" icon="pi pi-check" iconPos="left" [style]="{'background-color': '#f7ba2a', 'border-color': '#f7ba2a', 'margin-right': '20px'}" (click)="TriDateComm(jeux.commentaires)" label="Tri des commentaires"></button>
-<br/>
-<h2 class="p-text-center"> Ajout de commentaire </h2>
 
+<button pButton (click)="showModalDialog3()" icon="pi pi-comment" [style]="{'background-color': '#f7ba2a', 'border-color': '#f7ba2a', 'margin-right': '20px'}" label="Ajouter un commentaire"></button>
+<p-dialog header="Ajouter un commentaire" [(visible)]="displayModal3" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false">
+<h2 class="p-text-center"> Ajout de commentaire </h2>
 <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
   <div class="p-fluid">
     <div class="p-field">
-      <h5>Note</h5>
+      <p-fieldset [style]="{'background-color': '#DCDCDC'}" legend="Note" >
       <p-rating id="note" type="number" formControlName="note" [(ngModel)]="val" [cancel]="false"></p-rating>
       <div *ngIf="note.invalid && (note.dirty || note.touched)" class="invalid-feedback">
         <div *ngIf="note.errors.required" style="color:#ee7f01">La note est obligatoire</div>
         <div *ngIf="note.errors.minlength"  style="color:#ee7f01">La note doit être comprise entre 0 et 5</div>
       </div>
+        </p-fieldset>
     </div>
     <div class="p-field">
+      <p-fieldset [style]="{'background-color': '#DCDCDC'}" legend="Commentaire">
       <input id="commentaire" type="text" pInputText formControlName="commentaire" placeholder="Veuillez saisir votre commentaire">
       <div *ngIf="commentaire.invalid && (commentaire.dirty || commentaire.touched)" class="invalid-feedback">
         <div *ngIf="commentaire.errors.required" style="color:#ee7f01">Le commentaire est obligatoire</div>
         <div *ngIf="commentaire.errors.minlength"  style="color:#ee7f01">Le commentaire doit comporter au moins deux caractères</div>
       </div>
+      </p-fieldset>
     </div>
   </div>
-  <button id="button">Valider</button>
+  <button pButton id="button" type="submit">Valider</button>
 </form>
+</p-dialog>
+
 <p-table>
   <ng-template pTemplate="header">
     <tr>

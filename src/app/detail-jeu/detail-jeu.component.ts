@@ -30,6 +30,7 @@ export class DetailJeuComponent implements OnInit {
 
   displayModal: boolean;
   displayModal2: boolean;
+  displayModal3: boolean;
 
   val = 1;
   loading: boolean;
@@ -95,6 +96,10 @@ export class DetailJeuComponent implements OnInit {
   // tslint:disable-next-line:typedef
   showModalDialog2() {
     this.displayModal2 = true;
+  }
+
+  showModalDialog3(): void{
+    this.displayModal3 = true;
   }
 
   get note(): AbstractControl {
