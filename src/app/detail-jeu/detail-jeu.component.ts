@@ -30,6 +30,7 @@ export class DetailJeuComponent implements OnInit {
   statistiques: Statistique;
   tarif: Tarif;
 
+  displayModal3: boolean;
   displayModal: boolean;
   displayModal2: boolean;
 
@@ -138,4 +139,7 @@ export class DetailJeuComponent implements OnInit {
     this.router.navigate(lien);
   }
 
+  showModalDialog3(): void{
+    this.displayModal3 = true;
+  }
 }
