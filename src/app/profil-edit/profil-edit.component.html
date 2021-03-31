@@ -2,13 +2,6 @@
 <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
   <div class="p-fluid">
     <div class="p-field">
-      <input id="nom" type="text" pInputText formControlName="nom" placeholder="Veuillez saisir votre nom">
-      <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="invalid-feedback">
-        <div *ngIf="nom.errors.required" style="color:#ee7f01">Le nom est obligatoire</div>
-        <div *ngIf="nom.errors.minlength"  style="color:#ee7f01">Le nom doit comporter au moins deux caractères</div>
-      </div>
-    </div>
-    <div class="p-field">
       <input id="prenom" type="text" pInputText formControlName="prenom" placeholder="Veuillez saisir votre prénom">
       <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="invalid-feedback">
         <div *ngIf="prenom.errors.required" style="color:#ee7f01">Le prénom est obligatoire</div>
@@ -16,7 +9,21 @@
       </div>
     </div>
     <div class="p-field">
-      <input id="email" type="text" pInputText formControlName="email" placeholder="Veuillez saisir votre nouvelle adresse mail">
+      <input id="nom" type="text" pInputText formControlName="nom" placeholder="Veuillez saisir votre nom">
+      <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="invalid-feedback">
+        <div *ngIf="nom.errors.required" style="color:#ee7f01">Le nom est obligatoire</div>
+        <div *ngIf="nom.errors.minlength"  style="color:#ee7f01">Le nom doit comporter au moins deux caractères</div>
+      </div>
+    </div>
+    <div class="p-field">
+      <input id="pseudo" type="text" pInputText formControlName="pseudo" placeholder="Veuillez saisir votre pseudo">
+      <div *ngIf="pseudo.invalid && (pseudo.dirty || pseudo.touched)" class="invalid-feedback">
+        <div *ngIf="pseudo.errors.required" style="color:#ee7f01">Le pseudo est obligatoire</div>
+        <div *ngIf="pseudo.errors.minlength"  style="color:#ee7f01">Le pseudo doit comporter au moins deux caractères</div>
+      </div>
+    </div>
+    <div class="p-field">
+      <input id="email" type="text" pInputText formControlName="email" placeholder="Veuillez saisir votre adresse mail">
       <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
         <div *ngIf="email.errors.required" style="color:#ee7f01">L'adresse email est obligatoire</div>
         <div *ngIf="email.errors.email" style="color:#ee7f01"> L'adresse email n'a pas le bon format </div>

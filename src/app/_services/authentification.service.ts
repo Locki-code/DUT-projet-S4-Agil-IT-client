@@ -64,6 +64,7 @@ export class AuthentificationService {
   }
 
   register(prenom: string, nom: string, pseudo: string, email: string, password: string): Observable<any> {
+    console.log(password);
     return this.http.post<any>(`${environment.apiUrl}/auth/register`, {prenom, nom, pseudo, email, password}, httpOptions)
       .pipe(
         tap(rep => console.log(rep)),
@@ -76,8 +77,7 @@ export class AuthentificationService {
         catchError(err => {
           this.stopRefreshTokenTimer();
           this.userSubject.next(ANONYMOUS_USER);
-          console.log('probleme');
-          return throwError('bug');
+          return throwError(console.log(err));
           // return of('');
         }));
   }
@@ -95,7 +95,7 @@ export class AuthentificationService {
     this.stopRefreshTokenTimer();
     this.userSubject.next(ANONYMOUS_USER);
 
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
 

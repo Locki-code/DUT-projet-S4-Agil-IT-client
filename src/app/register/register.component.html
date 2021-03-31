@@ -40,18 +40,25 @@
       </div>
       </div>
     </div>
-    <div class="p-field">
-      <div class="form-group">
-        <!-- <p-password [(ngModel)]="value" [toggleMask]="true"> -->
-      <input id="password" type="password" pInputText formControlName="password" placeholder="Veuillez saisir votre mot de passe">
-      <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
-        <div *ngIf="password.errors.required" style="color:#ee7f01"> Le mot de passe est requis</div>
-        <div *ngIf="password.errors" style="color:#ee7f01"> Le mot de passe doit comporter au moins 8 caractères (dont une majuscule, minuscule et chiffre) </div>
+    <div formGroupName="password">
+      <div class="p-field">
+        <div class="form-group">
+          <input type="password" id="pwd" pInputText formControlName="pwd" placeholder="Veuillez saisir votre mot de passe">
+          <div *ngIf="pwd.invalid && pwd.touched" class="invalid-feedback">
+            Le mot de passe doit comporter au moins 8 caractères (dont une majuscule, minuscule et chiffre)
+          </div>
+        </div>
       </div>
-        <!-- </p-password> -->
-       </div>
-     </div>
-   </div>
+      <div class="p-field">
+        <div class="form-group">
+          <input type="password" id="confirmPwd" pInputText formControlName="confirmPwd" placeholder="Veuillez confirmer votre mot de passe">
+          <div *ngIf="password.invalid && password.touched && confirmPwd.touched" class="invalid-feedback">
+            Le mot de passe doit être identique à celui renseigné précedemment
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
    <button id="button" [disabled]="!registerForm.valid"> Valider </button>
  </form>
    <!--

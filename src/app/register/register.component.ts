@@ -26,12 +26,12 @@ export class RegisterComponent implements OnInit {
     nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
     pseudo: new FormControl('', [Validators.required, Validators.minLength(2)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*\\d).{8,}')]),
-    /*password: new FormGroup({
+    // password: new FormControl('', [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*\\d).{8,}')]),
+    password: new FormGroup({
       pwd : new FormControl('', [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*\\d).{8,}')]),
       confirmPwd : new FormControl(''),
     }, [MesValidateurs.passwordConfirming])
-    */
+
   });
 
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
@@ -58,7 +58,7 @@ export class RegisterComponent implements OnInit {
   get email(): AbstractControl {
     return this.registerForm.get('email');
   }
-  /*
+
   get pwd(): AbstractControl {
     return this.registerForm.get('password').get('pwd');
   }
@@ -66,7 +66,7 @@ export class RegisterComponent implements OnInit {
   get confirmPwd(): AbstractControl {
     return this.registerForm.get('password').get('confirmPwd');
   }
-*/
+
   get password(): AbstractControl {
     return this.registerForm.get('password');
   }
@@ -75,7 +75,7 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
     this.form = {...this.form, ...this.registerForm.value};
     this.loading = true;
-    this.authService.register(this.form.prenom, this.form.nom, this.form.pseudo, this.form.email, this.form.password)
+    this.authService.register(this.form.prenom, this.form.nom, this.form.pseudo, this.form.email, this.form.password.confirmPwd)
       .pipe(first())
       .subscribe(
         () => {
