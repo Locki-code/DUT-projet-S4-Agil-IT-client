@@ -38,6 +38,7 @@ import { EditCommentaireComponent } from './edit-commentaire/edit-commentaire.co
 import { AchatJeuComponent } from './achat-jeu/achat-jeu.component';
 import {RatingModule} from 'primeng/rating';
 import {DialogModule} from 'primeng/dialog';
+import {CheckboxModule} from 'primeng/checkbox';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -76,7 +77,8 @@ registerLocaleData(localeFr, 'fr');
     FormsModule,
     DropdownModule,
     RatingModule,
-    DialogModule
+    DialogModule,
+    CheckboxModule,
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
