@@ -63,6 +63,11 @@ export class AppComponent implements OnInit{
         label: 'Déconnexion',
         icon: 'pi pi-fw pi-power-off',
         command: event => this.logout(),
+      },
+      {
+        label: 'Créer un jeu',
+        icon: 'pi pi-fw pi-sign-in',
+        routerLink: ['/creer']
       }
     ];
   }

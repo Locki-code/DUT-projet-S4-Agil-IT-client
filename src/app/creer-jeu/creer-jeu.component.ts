@@ -4,9 +4,9 @@ import {JeuService} from '../_services/jeu.service';
 import {Mecanique} from '../jeu/Mecanique';
 import {Editeur} from '../jeu/Editeur';
 import {Themes} from '../jeu/Themes';
-import {Router} from '@angular/router';
-import {ThemeService} from '../_services/theme.service';
+import {ActivatedRoute, Router} from '@angular/router';
 import {noop, Observable, of} from 'rxjs';
+import {first} from 'rxjs/operators';
 
 interface Langue{
   langue: string;
@@ -34,16 +34,35 @@ interface Duree {
 
 export class CreerJeuComponent implements OnInit {
 
-  /*mecaniques: Mecanique[];
-  mecanique$: Observable<Mecanique[]>;
+  form: any = {
+    nom: null,
+    description: null,
+    themes: null,
+    editeurs: null,
+    langue: null,
+    age: null,
+    poids: null,
+    nombre_joueurs: null,
+    categorie: null,
+    duree: null,
+    regles: null
+  };
 
-  editeurs: Editeur[];
-  editeur$: Observable<Editeur[]>;
+  loading = false;
+  returnURL: string;
 
-  themes: Themes[];
-  theme$: Observable<Themes[]>;*/
 
-  themes: Themes[] = [ {"id": 0, "nom": ""}, {"id":1,"nom":"Abstrait, lettres \u0026 mots"},{"id":2,"nom":"Animaux \u0026 Nature"},{"id":3,"nom":"Autres"},{"id":4,"nom":"Cartoon \u0026 Dessin"},
+  mecaniques: Mecanique[] = [];
+  selectedMecanique : Mecanique;
+
+  editeurs: Editeur[] = [];
+  selectedEditeur : Editeur;
+
+  themes: Themes[] = [];
+  selectedTheme: Themes;
+
+
+  /*themes: Themes[] = [ {"id": 0, "nom": ""}, {"id":1,"nom":"Abstrait, lettres \u0026 mots"},{"id":2,"nom":"Animaux \u0026 Nature"},{"id":3,"nom":"Autres"},{"id":4,"nom":"Cartoon \u0026 Dessin"},
     {"id":5,"nom":"Enfance \u0026 Contes"},{"id":6,"nom":"Fantastique \u0026 Héroïc Fantasy"},{"id":7,"nom":"Histoire \u0026 Antiquité"},{"id":8,"nom":"Horreur \u0026 Post-Apocalytique"},
     {"id":9,"nom":"Loisirs \u0026 Voyage"},{"id":10,"nom":"Moderne \u0026 Réaliste"},{"id":11,"nom":"Pirates \u0026 Cow-boys"},{"id":12,"nom":"Science Fiction \u0026 Future"}];
 
@@ -60,7 +79,7 @@ export class CreerJeuComponent implements OnInit {
     {"id":12,"nom":"Dessin"},{"id":13,"nom":"Mime"},{"id":14,"nom":"Zombies"},{"id":15,"nom":"Contes"},{"id":16,"nom":"Observation"},{"id":17,"nom":"Bande dessinée"},
     {"id":18,"nom":"Animaux"},{"id":19,"nom":"Affrontement"},{"id":20,"nom":"Commerce"},{"id":21,"nom":"Jeu de rôle"},{"id":22,"nom":"Chance \u0026 Hasard"},{"id":23,"nom":"Cuisine"},
     {"id":24,"nom":"Bourse \u0026 finances"},{"id":25,"nom":"Divers"},{"id":26,"nom":"Histoire"},{"id":27,"nom":"choix multiples"},{"id":28,"nom":"Jeu d\u0027Ambiance"},
-    {"id":29,"nom":"Chiffres"},{"id":30,"nom":"Lettres \u0026 chiffres"}];
+    {"id":29,"nom":"Chiffres"},{"id":30,"nom":"Lettres \u0026 chiffres"}];*/
 
   langues: Langue[] = [ {langue: ''}, {langue: 'Français'}, {langue: 'Allemand'}, {langue: 'Suisse'}, {langue: 'Espagnole'}, {langue: 'Suédois'}]
 
@@ -75,7 +94,7 @@ export class CreerJeuComponent implements OnInit {
     description: new FormControl('', [Validators.required, Validators.minLength(10)]),
     regles: new FormControl('', [Validators.required, Validators.minLength(10)]),
     langue: new FormControl('', [Validators.required]),
-    poids: new FormControl('', [Validators.required, Validators.pattern('\\d\\d.\\d\\d')]),
+    poids: new FormControl('', [Validators.required, Validators.pattern('\\d.\\d\\d')]),
     url_media: new FormControl('', [Validators.required]),
     age: new FormControl('', [Validators.required]),
     nombre_joueurs: new FormControl('', [Validators.required]),
@@ -132,32 +151,62 @@ export class CreerJeuComponent implements OnInit {
     return this.formulaire.get('mecanique');
   }
 
-  constructor(public serviceJeu: JeuService, private serviceTheme: ThemeService) {
+  constructor(public serviceJeu: JeuService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit(): void {
-    /*this.mecanique$ = this.serviceJeu.getMecaniques();
-    this.editeur$ = this.serviceJeu.getEditeurs();
-    this.theme$ = this.serviceJeu.getThemes();
-    this.mecanique$.subscribe(val => this.mecaniques.push(val), noop, () => this.mecanique$ = of(this.mecaniques))*/
+    this.getMecaniques();
+    this.getEditeurs();
+    this.getThemes();
+    this.returnURL = this.route.snapshot.queryParams.returnUrl || '/';
+
   }
 
   onSubmit() {
     // tslint:disable-next-line:no-console
     console.info(this.formulaire.value);
-    //this.serviceJeu.setJeu(this.formulaire.value);
+    this.form = {...this.form, ...this.formulaire.value};
+    this.loading = true;
+    this.serviceJeu.register(this.form.nom, this.form.description, this.selectedTheme.id, this.selectedEditeur.id, this.form.langue, this.form.age, this.form.poids, this.form.nombre_joueurs, this.selectedMecanique.nom, this.form.duree, this.form.regles)
+      .pipe(first())
+      .subscribe(
+        () => {
+          this.router.navigate([this.returnURL]);
+        },
+        error => {
+          console.log('Erreur: ', error);
+          // this.error = error.error.data.values[0];
+          this.loading = false;
+        }
+      );
+
   }
 
-  /*getMecaniques(): void {
-    this.mecanique$.subscribe(val => {this.mecaniques; });
+  getMecaniques(): void {
+    this.serviceJeu.getMecaniques()
+      .subscribe(mecaniques => {
+        mecaniques.map( mec => {
+          this.mecaniques.push(mec);
+        });
+      });
   }
 
   getEditeurs(): void {
-    this.editeur$.subscribe(val => {this.editeurs; });
+    this.serviceJeu.getEditeurs()
+      .subscribe(editeurs => {
+        editeurs.map( edit => {
+          this.editeurs.push(edit);
+        });
+      });
   }
 
   getThemes(): void{
-    this.theme$.subscribe(val => {this.themes; });
-  }*/
+    this.serviceJeu.getThemes()
+      .subscribe(themes => {
+        themes.map( theme => {
+          this.themes.push(theme);
+        });
+      });
+  }
 
 }
