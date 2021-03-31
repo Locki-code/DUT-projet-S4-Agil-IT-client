@@ -24,7 +24,6 @@ import { ListeJeuComponent } from './liste-jeu/liste-jeu.component';
 import {CardModule} from 'primeng/card';
 import {MenubarModule} from 'primeng/menubar';
 import {TableModule} from 'primeng/table';
-<<<<<<<<< Temporary merge branch 1
 import { MesJeuxComponent } from './mes-jeux/mes-jeux.component';
 import { DetailJeuComponent } from './detail-jeu/detail-jeu.component';
 import {ButtonModule} from 'primeng/button';
@@ -53,15 +52,13 @@ registerLocaleData(localeFr, 'fr');
     LpSolverTestComponent,
     ListeJeuComponent,
     CreerJeuComponent,
-    ListeJeuComponent,
     MesJeuxComponent,
     DetailJeuComponent,
     ProfilEditComponent,
     RegisterComponent,
     EditCommentaireComponent,
     AchatJeuComponent,
-    SuppressionAchatJeuComponent,
-    CreerJeuComponent
+    SuppressionAchatJeuComponent
   ],
   imports: [
     BrowserModule,

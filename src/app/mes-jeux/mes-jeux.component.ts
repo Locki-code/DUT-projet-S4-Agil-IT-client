@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {Jeu} from '../jeu/Jeu';
+import {Jeu} from '../jeu/jeu';
 import {UserService} from '../_services/user.service';
 import {ActivatedRoute} from '@angular/router';
 import {AuthentificationService} from '../_services/authentification.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {MessageService} from "primeng/api";
+import {MessageService} from 'primeng/api';
 
 declare var solver: any;
 
