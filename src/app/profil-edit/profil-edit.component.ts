@@ -53,7 +53,7 @@ export class ProfilEditComponent implements OnInit {
   }
 
 
-  // tslint:disable-next-line:typedefs
+  // tslint:disable-next-line:typedefs typedef
   onSubmit() {
     this.form = {...this.form, ...this.formulaire.value};
     this.userService.updateProfile(1, this.form.pseudo, this.form.nom, this.form.prenom,  this.form.email, 'PUT' )

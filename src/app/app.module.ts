@@ -80,7 +80,7 @@ registerLocaleData(localeFr, 'fr');
     DropdownModule,
     RatingModule,
     DialogModule,
-    CheckboxModule,
+    CheckboxModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

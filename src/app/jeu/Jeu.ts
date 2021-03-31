@@ -3,6 +3,7 @@ import {Editeur} from './Editeur';
 import {Theme} from './Theme';
 import {Statistique} from './Statistique';
 import {Tarif} from './Tarif';
+import {Mecanic} from '../_models/mecanic';
 
 export interface Jeu {
   id: number;
@@ -19,4 +20,8 @@ export interface Jeu {
   statistiques: Statistique;
   tarif: Tarif;
 
+  age: number;
+  poids: number;
+  categorie: string;
+  mecanic: Mecanic[];
 }
