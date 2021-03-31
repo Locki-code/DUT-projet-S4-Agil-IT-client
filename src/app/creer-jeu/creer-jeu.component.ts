@@ -1,18 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {JeuService} from '../_services/jeu.service';
-import {Mecanique} from '../jeu/Mecanique';
-import {Editeur} from '../jeu/Editeur';
-import {Themes} from '../jeu/Themes';
+import {Mecanique} from '../jeu/mecanique';
+import {Editeur} from '../jeu/editeur';
+import {Theme} from '../jeu/theme';
 import {ActivatedRoute, Router} from '@angular/router';
 import {first} from 'rxjs/operators';
+import {min} from 'moment';
 
 interface Langue{
   langue: string;
 }
 
 interface Age{
-  age: number;
+  age: string;
 }
 
 interface NbJoueurs{
@@ -50,26 +51,26 @@ export class CreerJeuComponent implements OnInit {
   loading = false;
   returnURL: string;
   mecaniques: Mecanique[] = [];
-  selectedMecanique: Mecanique = null;
+  selectedMecanique: string;
   editeurs: Editeur[] = [];
-  selectedEditeur: Editeur = null;
-  themes: Themes[] = [];
-  selectedTheme: Themes = null;
+  selectedEditeur: number;
+  themes: Theme[] = [];
+  selectedTheme: number;
 
-  langues: Langue[] = [ {langue: ''}, {langue: 'Français'}, {langue: 'Allemand'}, {langue: 'Suisse'}, {langue: 'Espagnole'}, {langue: 'Suédois'}];
+  langues: Langue[] = [ {langue: 'Français'}, {langue: 'Allemand'}, {langue: 'Suisse'}, {langue: 'Espagnole'}, {langue: 'Suédois'}];
 
-  ages: Age[] = [ {age: null}, {age: 2}, {age: 4}, {age: 6}, {age: 8}, {age: 12}, {age: 14}];
+  ages: Age[] = [ {age: '2'}, {age: '4'}, {age: '6'}, {age: '8'}, {age: '12'}, {age: '14'}];
 
-  nbJoueurs: NbJoueurs[] = [ {nbJoueurs: null}, {nbJoueurs: 2}, {nbJoueurs: 3}, {nbJoueurs: 4}, {nbJoueurs: 5}, {nbJoueurs: 6}, {nbJoueurs: 8}];
+  nbJoueurs: NbJoueurs[] = [ {nbJoueurs: 2}, {nbJoueurs: 3}, {nbJoueurs: 4}, {nbJoueurs: 5}, {nbJoueurs: 6}, {nbJoueurs: 8}];
 
-  durees: Duree[] = [ {duree: ''}, {duree: '- de 10 Minutes'}, {duree: 'Entre 10 et 20 Min'}, {duree: 'Une demi heure'}, {duree: 'une heure'}, {duree: 'Plus d\'une heure'}];
+  durees: Duree[] = [ {duree: '- de 10 Minutes'}, {duree: 'Entre 10 et 20 Min'}, {duree: 'Une demi heure'}, {duree: 'une heure'}, {duree: 'Plus d\'une heure'}];
 
   formulaire = new FormGroup({
     nom: new FormControl('', [Validators.required, Validators.minLength(4)]),
     description: new FormControl('', [Validators.required, Validators.minLength(10)]),
     regles: new FormControl('', [Validators.required, Validators.minLength(10)]),
     langue: new FormControl('', [Validators.required]),
-    poids: new FormControl('', [Validators.required, Validators.pattern('\\d.\\d\\d')]),
+    poids: new FormControl('', [Validators.required, Validators.min(0.1), Validators.max(5)]),
     url_media: new FormControl('', [Validators.required]),
     age: new FormControl('', [Validators.required]),
     nombre_joueurs: new FormControl('', [Validators.required]),
@@ -134,14 +135,13 @@ export class CreerJeuComponent implements OnInit {
     this.getEditeurs();
     this.getThemes();
     this.returnURL = this.route.snapshot.queryParams.returnUrl || '/';
-
   }
   onSubmit() {
     // tslint:disable-next-line:no-console
     console.info(this.formulaire.value);
     this.form = {...this.form, ...this.formulaire.value};
     this.loading = true;
-    this.serviceJeu.register(this.form.nom, this.form.description, this.selectedTheme.id, this.selectedEditeur.id, this.form.langue, this.form.age, this.form.poids, this.form.nombre_joueurs, this.selectedMecanique.nom, this.form.duree, this.form.regles)
+    this.serviceJeu.register(this.form.nom, this.form.description, +this.form.themes, +this.form.editeur, this.form.langue, String(this.form.age) + '', this.form.poids, this.form.nombre_joueurs, this.selectedMecanique, this.form.duree, this.form.regles)
       .pipe(first())
       .subscribe(
         () => {

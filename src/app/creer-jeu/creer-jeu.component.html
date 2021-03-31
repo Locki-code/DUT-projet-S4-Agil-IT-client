@@ -43,7 +43,7 @@
     <div class="p-formgroup-inline">
       <div class="p-field">Poids
         <label for="poids" class="p-sr-only">Poids</label>
-        <input id="poids" type="text" pInputText placeholder="Poids" formControlName="poids">
+        <input id="poids" type="number" pInputText placeholder="Poids" formControlName="poids">
         <div *ngIf="poids.invalid && (poids.dirty || poids.touched)" class="mat-error">
           <div *ngIf="poids?.errors.required" style="color: crimson">Le poids du jeu est obligatoire</div>
           <div *ngIf="poids?.errors.pattern"  style="color: crimson">Le poids du jeu doit être de la forme 99.99</div>
@@ -59,7 +59,7 @@
       <div class="p-formgroup-inline">
         <div class="p-field">Age
           <label for="age" class="p-sr-only">Age</label>
-          <p-dropdown id="age" name="age"  optionLabel="age" optionValue="age" [options]="ages" formControlName="age"></p-dropdown>
+          <p-dropdown placeholder="Age maximum" id="age" name="age"  optionLabel="age" optionValue="age" [options]="ages" formControlName="age"></p-dropdown>
           <div *ngIf="age.invalid && (age.dirty || age.touched)" class="mat-error">
             <div *ngIf="age?.errors.required" style="color: crimson">L'âge du jeu est obligatoire</div>
           </div>
@@ -68,7 +68,7 @@
       <div class="p-formgroup-inline">
         <div class="p-field">Nombre de joueurs
           <label for="nombre_joueurs" class="p-sr-only">Nombre de joueurs</label>
-          <p-dropdown id="nombre_joueurs" name="nombre_joueurs"  optionLabel="nbJoueurs" optionValue="nbJoueurs" [options]="nbJoueurs" formControlName="nombre_joueurs"></p-dropdown>
+          <p-dropdown placeholder="Nombre de joueur maximum" id="nombre_joueurs" name="nombre_joueurs"  optionLabel="nbJoueurs" optionValue="nbJoueurs" [options]="nbJoueurs" formControlName="nombre_joueurs"></p-dropdown>
           <div *ngIf="nombre_joueurs.invalid && (nombre_joueurs.dirty || nombre_joueurs.touched)" class="mat-error">
             <div *ngIf="nombre_joueurs?.errors.required" style="color: crimson">Le nombre de joueurs est obligatoire</div>
           </div>
@@ -77,7 +77,7 @@
         <div class="p-formgroup-inline">
           <div class="p-field">Thème
             <label for="theme" class="p-sr-only">Thème</label>
-            <p-dropdown id="theme" name="theme"  optionLabel="nom" optionValue="nom" [options]="themes" [(ngModel)]="selectedTheme" formControlName="theme"></p-dropdown>
+            <p-dropdown placeholder="Theme"  id="theme" name="theme" optionLabel="nom" optionValue="id" [options]="themes" [(ngModel)]="selectedTheme" formControlName="theme"></p-dropdown>
             <div *ngIf="theme.invalid && (theme.dirty || theme.touched)" class="mat-error">
               <div *ngIf="theme?.errors.required" style="color: crimson">Le thème est obligatoire</div>
             </div>
@@ -95,7 +95,7 @@
   <div class="p-formgroup-inline">
     <div class="p-field">Editeur
       <label for="editeur" class="p-sr-only">Editeur</label>
-      <p-dropdown id="editeur" name="editeur"  optionLabel="nom" optionValue="nom" [options]="editeurs" [(ngModel)]="selectedEditeur" formControlName="editeur"></p-dropdown>
+      <p-dropdown placeholder="Editeur" id="editeur" name="editeur"  optionLabel="nom" optionValue="id" [options]="editeurs" [(ngModel)]="selectedEditeur" formControlName="editeur"></p-dropdown>
       <div *ngIf="editeur.invalid && (editeur.dirty || editeur.touched)" class="mat-error">
         <div *ngIf="editeur?.errors.required" style="color: crimson">L'éditeur du jeu est obligatoire</div>
       </div>
@@ -104,7 +104,15 @@
   <div class="p-formgroup-inline">
     <div class="p-field">Mécanique
       <label for="mecanique" class="p-sr-only">Mécanique</label>
-      <p-dropdown id="mecanique" name="mecanique"  optionLabel="nom" optionValue="nom" [options]="mecaniques" [(ngModel)]="selectedMecanique" formControlName="mecanique"></p-dropdown>
+      <!--p-dropdown [options]="mecaniques"
+                  [(ngModel)]="selectedMecanique"
+                  optionLabel="nom" class="ng-invalid ng-dirty"
+                  placeholder="Theme" id="mecanique"
+                  name="mecanique">
+      </p-dropdown-->
+      <p-dropdown id="mecanique" name="mecanique"  optionLabel="nom" optionValue="nom"
+                  [options]="mecaniques" [(ngModel)]="selectedMecanique"
+                  formControlName="mecanique" placeholder="Mecanique" ></p-dropdown>
       <div *ngIf="mecanique.invalid && (mecanique.dirty || mecanique.touched)" class="mat-error">
         <div *ngIf="mecanique?.errors.required" style="color: crimson">La mécanique du jeu est obligatoire</div>
       </div>
@@ -112,3 +120,4 @@
   </div>
   <button pButton type="submit" label="Valide" [disabled]="!formulaire.valid"></button>
 </form>
+<p>{{this.selectedMecanique}}</p>

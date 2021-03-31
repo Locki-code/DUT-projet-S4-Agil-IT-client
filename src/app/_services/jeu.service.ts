@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import {Observable, of, throwError} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, map, shareReplay, tap} from 'rxjs/operators';
-import {Jeu} from '../jeu/Jeu';
-import {Mecanique} from '../jeu/Mecanique';
-import {Editeur} from '../jeu/Editeur';
-import {Themes} from '../jeu/Themes';
+import {Jeu} from '../jeu/jeu';
+import {Mecanique} from '../jeu/mecanique';
+import {Editeur} from '../jeu/editeur';
+import {Theme} from '../jeu/theme';
 import {environment} from '../../environments/environment';
 import {Router} from '@angular/router';
 
@@ -67,7 +67,7 @@ export class JeuService {
       );
   }
 
-  getThemes(): Observable<Themes[]>{
+  getThemes(): Observable<Theme[]>{
     const url = 'http://127.0.0.1:8000/api/themes/';
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -83,7 +83,8 @@ export class JeuService {
       );
   }
 
-  register(nom: string, description: string, theme: number, editeur: number, langue: string, age: number, poids: number, nombre_joueurs: number, categorie: string, duree: string, regles: string): Observable<any>{
+  // tslint:disable-next-line:variable-name
+  register(nom: string, description: string, theme: number, editeur: number, langue: string, age: string, poids: number, nombre_joueurs: number, categorie: string, duree: string, regles: string): Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
