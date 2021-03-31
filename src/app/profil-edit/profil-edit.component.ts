@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ProfileComponent} from '../profile/profile.component';
 import {UserService} from '../_services/user.service';
 import {first} from 'rxjs/operators';
@@ -29,9 +29,10 @@ export class ProfilEditComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
   });
 
-  constructor(private userService: UserService, private router: Router, private authService: AuthentificationService) { }
+  constructor(private userService: UserService, private router: Router, private authService: AuthentificationService, private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 
 
@@ -55,7 +56,7 @@ export class ProfilEditComponent implements OnInit {
   // tslint:disable-next-line:typedefs
   onSubmit() {
     this.form = {...this.form, ...this.formulaire.value};
-    this.userService.updateProfile(this.form.nom, this.form.prenom, this.form.pseudo, this.form.email)
+    this.userService.updateProfile(1, this.form.pseudo, this.form.nom, this.form.prenom,  this.form.email, 'PUT' )
       .pipe(first())
       .subscribe(
         () => {
