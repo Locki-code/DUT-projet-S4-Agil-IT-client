@@ -7,6 +7,7 @@ import {ActivatedRoute} from '@angular/router';
 import {Commentaire} from '../jeu/Commentaire';
 import {TriCommentaireService} from '../_services/tri-commentaire.service';
 import {Statistique} from '../jeu/Statistique';
+import {Tarif} from '../jeu/Tarif';
 
 @Component({
   selector: 'app-detail-jeu',
@@ -20,8 +21,11 @@ export class DetailJeuComponent implements OnInit {
   jeux$: Observable<Jeu[]>;
   sort: number = undefined;
   statistiques : Statistique;
+  tarif: Tarif;
 
   displayModal: boolean;
+  displayModal2: boolean;
+
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -55,6 +59,10 @@ export class DetailJeuComponent implements OnInit {
 
   showModalDialog(): void {
     this.displayModal = true;
+  }
+
+  showModalDialog2() {
+    this.displayModal2 = true;
   }
 
 

@@ -2,6 +2,7 @@ import {Commentaire} from './Commentaire';
 import {Editeur} from './Editeur';
 import {Theme} from './Theme';
 import {Statistique} from './Statistique';
+import {Tarif} from './Tarif';
 
 export interface Jeu {
   id: number;
@@ -16,4 +17,6 @@ export interface Jeu {
   duree: string;
   commentaires: Commentaire[];
   statistiques: Statistique;
+  tarif: Tarif;
+
 }
