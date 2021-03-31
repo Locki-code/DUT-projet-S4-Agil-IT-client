@@ -1,19 +1,17 @@
-import {Commentaire} from './Commentaire';
-import {Editeur} from './Editeur';
-import {Theme} from './Theme';
-import {Statistique} from './Statistique';
-import {Tarif} from './Tarif';
+import {Commentaire} from './commentaire';
+import {Statistique} from './statistique';
+import {Tarif} from './tarif';
 import {Mecanic} from '../_models/mecanic';
 
 export interface Jeu {
   id: number;
   nom: string;
   description: string;
-  editeur_id: Editeur;
+  editeur_id: number;
   regles: string;
   langue: string;
   url_media: string;
-  theme_id: Theme;
+  theme_id: number;
   nombre_joueurs: string;
   duree: string;
   commentaires: Commentaire[];

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {JeuService} from '../_services/jeu.service';
-import {Jeu} from '../jeu/Jeu';
+import {Jeu} from '../jeu/jeu';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Theme} from '../_models/theme';

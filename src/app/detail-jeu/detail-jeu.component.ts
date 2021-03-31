@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {JeuService} from '../_services/jeu.service';
-import {Jeu} from '../jeu/Jeu';
+import {Jeu} from '../jeu/jeu';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
-import {Commentaire} from '../jeu/Commentaire';
+import {Commentaire} from '../jeu/commentaire';
 import {TriCommentaireService} from '../_services/tri-commentaire.service';
-import {Statistique} from '../jeu/Statistique';
-import {Tarif} from '../jeu/Tarif';
+import {Statistique} from '../jeu/statistique';
+import {Tarif} from '../jeu/tarif';
 import {first} from 'rxjs/operators';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserInfo} from '../_models/user-info';

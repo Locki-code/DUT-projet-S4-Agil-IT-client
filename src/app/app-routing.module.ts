@@ -12,6 +12,7 @@ import { EditCommentaireComponent } from './edit-commentaire/edit-commentaire.co
 import {AchatJeuComponent} from './achat-jeu/achat-jeu.component';
 import {SuppressionAchatJeuComponent} from './suppression-achat-jeu/suppression-achat-jeu.component';
 
+import {CreerJeuComponent} from './creer-jeu/creer-jeu.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'jeux/:id', component: DetailJeuComponent},
   {path: 'inscription', component: RegisterComponent},
+  {path: 'jeux/creer', component: CreerJeuComponent},
   {path: 'jeux/edit/:id', component: EditCommentaireComponent},
   {path: 'jeux/delete/:id', component: SuppressionAchatJeuComponent},
   {path: 'profile', component: ProfileComponent},

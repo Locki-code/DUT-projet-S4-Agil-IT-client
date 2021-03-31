@@ -15,7 +15,7 @@ export class AppComponent implements OnInit{
   constructor(public messageService: MessageService, public authService: AuthentificationService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.items = [
       {
         label: 'La ludothèque des gens cool',
@@ -57,6 +57,11 @@ export class AppComponent implements OnInit{
         label: 'Déconnexion',
         icon: 'pi pi-fw pi-power-off',
         command: event => this.logout(),
+      },
+      {
+        label: 'Créer un jeu',
+        icon: 'pi pi-fw pi-sign-in',
+        routerLink: ['/creer']
       }
     ];
   }

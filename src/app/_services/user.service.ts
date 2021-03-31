@@ -3,7 +3,7 @@ import {BehaviorSubject, Observable, of, throwError} from 'rxjs';
 import {UserInfo} from '../_models/user-info';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {Jeu} from '../jeu/Jeu';
+import {Jeu} from '../jeu/jeu';
 import {catchError, map, shareReplay, tap} from 'rxjs/operators';
 import {ANONYMOUS_USER} from './authentification.service';
 import {User} from '../_models/user';

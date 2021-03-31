@@ -33,13 +33,15 @@ import {InputTextModule} from 'primeng/inputtext';
 import { RegisterComponent } from './register/register.component';
 import {FieldsetModule} from 'primeng/fieldset';
 import {PasswordModule} from 'primeng/password';
-import {DropdownModule} from 'primeng/dropdown';
 import { EditCommentaireComponent } from './edit-commentaire/edit-commentaire.component';
 import { AchatJeuComponent } from './achat-jeu/achat-jeu.component';
 import {RatingModule} from 'primeng/rating';
 import {DialogModule} from 'primeng/dialog';
 import {CheckboxModule} from 'primeng/checkbox';
 import { SuppressionAchatJeuComponent } from './suppression-achat-jeu/suppression-achat-jeu.component';
+import { CreerJeuComponent } from './creer-jeu/creer-jeu.component';
+import {DropdownModule} from 'primeng/dropdown';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -49,6 +51,8 @@ registerLocaleData(localeFr, 'fr');
     LoginComponent,
     ProfileComponent,
     LpSolverTestComponent,
+    ListeJeuComponent,
+    CreerJeuComponent,
     ListeJeuComponent,
     MesJeuxComponent,
     DetailJeuComponent,
@@ -72,11 +76,14 @@ registerLocaleData(localeFr, 'fr');
     MenubarModule,
     TableModule,
     ButtonModule,
+    DropdownModule,
+    FormsModule,
+    TableModule,
+    ButtonModule,
     RippleModule,
     InputTextModule,
     FieldsetModule,
     PasswordModule,
-    FormsModule,
     DropdownModule,
     RatingModule,
     DialogModule,

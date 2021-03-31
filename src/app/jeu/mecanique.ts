@@ -1,4 +1,4 @@
-export interface Theme{
+export interface Mecanique{
   id: number;
   nom: string;
 }

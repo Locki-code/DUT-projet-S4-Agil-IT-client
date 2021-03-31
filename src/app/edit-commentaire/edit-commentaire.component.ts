@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Jeu} from '../jeu/Jeu';
+import {Jeu} from '../jeu/jeu';
 import {Router} from '@angular/router';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../_services/user.service';

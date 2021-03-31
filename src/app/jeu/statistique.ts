@@ -6,5 +6,4 @@ export interface Statistique {
   nbCommentairesTotal: number,
   rang: number,
   nbJeuxTheme: number
-
 }
