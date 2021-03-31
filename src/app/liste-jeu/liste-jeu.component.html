@@ -38,7 +38,10 @@
   <i class="pi {{iconTriName}}"></i> Tri par nom</button>
 <button style="margin:20px " (click)="modifTriNote()">
   <i class="pi {{iconTriNote}}"></i> Tri par note</button>
-<p-table [value]="jeux$ | async">
+<p-table [value]="jeux$ | async" styleClass="p-datatable-customers" [rowHover]="true"
+         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+         [paginator]="true" currentPageReportTemplate="Page {first} / {last} sur {totalRecords} entrées"
+         [filterDelay]="0">
   <ng-template pTemplate="header">
     <tr>
       <th style="text-align: center">Nom</th>
