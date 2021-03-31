@@ -6,7 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthentificationService} from './_services/authentification.service';
 import {MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
@@ -27,6 +27,7 @@ import {TableModule} from 'primeng/table';
 import { MesJeuxComponent } from './mes-jeux/mes-jeux.component';
 import { DetailJeuComponent } from './detail-jeu/detail-jeu.component';
 import {ButtonModule} from 'primeng/button';
+import {DropdownModule} from 'primeng/dropdown';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -53,7 +54,9 @@ registerLocaleData(localeFr, 'fr');
     CardModule,
     MenubarModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
+    DropdownModule,
+    FormsModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
