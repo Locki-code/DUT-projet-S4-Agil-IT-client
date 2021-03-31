@@ -1,6 +1,7 @@
 import {Commentaire} from './Commentaire';
 import {Editeur} from './Editeur';
 import {Theme} from './Theme';
+import {Statistique} from './Statistique';
 
 export interface Jeu {
   id: number;
@@ -14,4 +15,5 @@ export interface Jeu {
   nombre_joueurs: string;
   duree: string;
   commentaires: Commentaire[];
+  statistiques: Statistique;
 }
