@@ -12,6 +12,7 @@ import {first} from 'rxjs/operators';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserInfo} from '../_models/user-info';
 import {Mecanic} from '../_models/mecanic';
+import {AuthentificationService} from "../_services/authentification.service";
 
 
 @Component({
@@ -20,6 +21,7 @@ import {Mecanic} from '../_models/mecanic';
   styleUrls: ['./detail-jeu.component.css']
 })
 export class DetailJeuComponent implements OnInit {
+  user_id = this.authService.userValue.id;
   jeux: Jeu;
   jeu: Jeu[];
   comm: Commentaire[];
@@ -51,7 +53,8 @@ export class DetailJeuComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private jeuService: JeuService,
-              private triCommentaireService: TriCommentaireService) {
+              private triCommentaireService: TriCommentaireService,
+              private authService: AuthentificationService) {
   }
 
   ngOnInit(): void {

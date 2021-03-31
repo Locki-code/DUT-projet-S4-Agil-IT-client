@@ -134,4 +134,10 @@ export class UserService {
           // return of('');
         }));
   }
+
+  // tslint:disable-next-line:variable-name
+  suppressionCommentaire(id: number): Observable<any> {
+    // @ts-ignore
+    return this.http.delete<any>(`${environment.apiUrl}/commentaires/` + id, {}, httpOptions);
+  }
 }

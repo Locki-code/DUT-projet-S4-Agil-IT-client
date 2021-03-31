@@ -13,11 +13,13 @@ import {AchatJeuComponent} from './achat-jeu/achat-jeu.component';
 import {SuppressionAchatJeuComponent} from './suppression-achat-jeu/suppression-achat-jeu.component';
 
 import {CreerJeuComponent} from './creer-jeu/creer-jeu.component';
+import {ModerationCommentaireComponent} from './moderation-commentaire/moderation-commentaire.component';
 
 
 const routes: Routes = [
   {path: '', component: ListeJeuComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'commentaire/delete/:id', component: ModerationCommentaireComponent},
   {path: 'jeux/:id', component: DetailJeuComponent},
   {path: 'inscription', component: RegisterComponent},
   {path: 'jeux/creer', component: CreerJeuComponent},
