@@ -24,6 +24,7 @@ import { ListeJeuComponent } from './liste-jeu/liste-jeu.component';
 import {CardModule} from 'primeng/card';
 import {MenubarModule} from 'primeng/menubar';
 import {TableModule} from 'primeng/table';
+<<<<<<<<< Temporary merge branch 1
 import { MesJeuxComponent } from './mes-jeux/mes-jeux.component';
 import { DetailJeuComponent } from './detail-jeu/detail-jeu.component';
 import {ButtonModule} from 'primeng/button';
@@ -33,6 +34,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import { RegisterComponent } from './register/register.component';
 import {FieldsetModule} from 'primeng/fieldset';
 import {PasswordModule} from 'primeng/password';
+import {DropdownModule} from 'primeng/dropdown';
 import { EditCommentaireComponent } from './edit-commentaire/edit-commentaire.component';
 import { AchatJeuComponent } from './achat-jeu/achat-jeu.component';
 import {RatingModule} from 'primeng/rating';
@@ -40,8 +42,6 @@ import {DialogModule} from 'primeng/dialog';
 import {CheckboxModule} from 'primeng/checkbox';
 import { SuppressionAchatJeuComponent } from './suppression-achat-jeu/suppression-achat-jeu.component';
 import { CreerJeuComponent } from './creer-jeu/creer-jeu.component';
-import {DropdownModule} from 'primeng/dropdown';
-
 
 registerLocaleData(localeFr, 'fr');
 
@@ -61,6 +61,7 @@ registerLocaleData(localeFr, 'fr');
     EditCommentaireComponent,
     AchatJeuComponent,
     SuppressionAchatJeuComponent,
+    CreerJeuComponent
   ],
   imports: [
     BrowserModule,
@@ -76,14 +77,11 @@ registerLocaleData(localeFr, 'fr');
     MenubarModule,
     TableModule,
     ButtonModule,
-    DropdownModule,
-    FormsModule,
-    TableModule,
-    ButtonModule,
     RippleModule,
     InputTextModule,
     FieldsetModule,
     PasswordModule,
+    FormsModule,
     DropdownModule,
     RatingModule,
     DialogModule,
