@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, map} from 'rxjs/operators';
+import {catchError, map, tap} from 'rxjs/operators';
 import {Jeu} from '../jeu/Jeu';
 import { Mecanic } from '../_models/mecanic';
+import {Commentaire} from '../jeu/Commentaire';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,7 @@ export class JeuService {
     }
 
     const url = `http://127.0.0.1:8000/api/jeux${params}`;
+    console.log(url);
     const httpOptions = {
       headers: new HttpHeaders({'Content-Type': 'application/json'})
     };
@@ -52,6 +54,22 @@ export class JeuService {
         map(res => res.data.item),
       );
   }
+
+  updateCommentary(jeux: Jeu): Observable<any> {
+    const url = 'http://localhost:8000/api/jeux/edit';
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
+    };
+    return this.http.put(url, jeux, httpOptions).pipe(
+      tap(_ => this.log(`updated comm id=${jeux.id}`))
+    );
+  }
+
+  // tslint:disable-next-line:typedef
+  private log(log: string) {
+    // tslint:disable-next-line:no-console
+      console.info(log);
+    }
 
   getTheme(id?: number): Observable<Mecanic[]> {
     let params = 'themes';

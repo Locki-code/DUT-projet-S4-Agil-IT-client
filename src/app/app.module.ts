@@ -6,7 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthentificationService} from './_services/authentification.service';
 import {MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
@@ -34,6 +34,7 @@ import { RegisterComponent } from './register/register.component';
 import {FieldsetModule} from 'primeng/fieldset';
 import {PasswordModule} from 'primeng/password';
 import {DropdownModule} from 'primeng/dropdown';
+import { EditCommentaireComponent } from './edit-commentaire/edit-commentaire.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -47,7 +48,8 @@ registerLocaleData(localeFr, 'fr');
     MesJeuxComponent,
     DetailJeuComponent,
     ProfilEditComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditCommentaireComponent,
   ],
   imports: [
     BrowserModule,
