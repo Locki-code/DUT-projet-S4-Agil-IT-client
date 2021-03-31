@@ -2,20 +2,23 @@
 <p-table [value]="jeux | async">
   <ng-template pTemplate="header">
     <tr>
-      <th>Nom</th>
-      <th>Date d'achat</th>
-      <th>Lieu d'achat</th>
-      <th>Prix</th>
-      <th>Détail</th>
+      <th style="text-align: center">Nom</th>
+      <th style="text-align: center">Photo</th>
+      <th style="text-align: center">Date d'achat</th>
+      <th style="text-align: center">Lieu d'achat</th>
+      <th style="text-align: center">Prix</th>
+      <th style="text-align: center">Détail</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-jeu>
     <tr>
-      <td>{{jeu.jeu.nom}}</td>
-      <td>{{jeu.date_achat}}</td>
-      <td>{{jeu.lieu}}</td>
-      <td>{{jeu.prix}}</td>
-      <td><button type="button" pButton pRipple icon="pi pi-exclamation-circle" [routerLink]="['/jeux', jeu.id]"></button></td>
+      <td style="text-align: center">{{jeu.jeu.nom}}</td>
+      <td style="text-align: center"><img src="{{jeu.jeu.url_media}}" alt="{{jeu.nom}}" width="150" height="150"></td>
+      <td style="text-align: center">{{jeu.date_achat}}</td>
+      <td style="text-align: center">{{jeu.lieu}}</td>
+      <td style="text-align: center">{{jeu.prix}}</td>
+      <td style="text-align: center"><button type="button" pButton icon="pi pi-search" [routerLink]="['/jeux', jeu.jeu.id]" style="background-color: #f7ba2a "></button></td>
+
 
     </tr>
   </ng-template>
