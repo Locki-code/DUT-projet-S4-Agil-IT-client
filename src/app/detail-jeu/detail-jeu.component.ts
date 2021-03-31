@@ -24,6 +24,7 @@ export class DetailJeuComponent implements OnInit {
         this.jeux = val;
       }
     );
+
   }
 
 }
