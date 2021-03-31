@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 import {Commentaire} from '../jeu/Commentaire';
 import {TriCommentaireService} from '../_services/tri-commentaire.service';
+import {Statistique} from '../jeu/Statistique';
 
 @Component({
   selector: 'app-detail-jeu',
@@ -18,6 +19,9 @@ export class DetailJeuComponent implements OnInit {
   comm: Commentaire[];
   jeux$: Observable<Jeu[]>;
   sort: number = undefined;
+  statistiques : Statistique;
+
+  displayModal: boolean;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -48,6 +52,11 @@ export class DetailJeuComponent implements OnInit {
     }
     this.comm = this.triCommentaireService.getCommByDate( commentaires, this.sort);
   }
+
+  showModalDialog() {
+    this.displayModal = true;
+  }
+
 
   /*getMoyenneNoteById(id: number): number {
     const nt = this.jeux.commentaires.find(n => n.id === id);

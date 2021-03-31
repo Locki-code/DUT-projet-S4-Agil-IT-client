@@ -15,7 +15,23 @@
 
   </ng-template>
 </p-card>
-<button pButton type="button" icon="pi pi-check" iconPos="left" (click)="TriDateComm(jeux.commentaires)"></button>
+<p-button (click)="showModalDialog()" icon="pi pi-chart-bar" label="Statistiques du jeu"></p-button>
+<p-dialog header="Statistiques du jeu" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw', 'background-color': '#f7ba2a'}" [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false">
+      <p class="p-m-0">Note moyenne du jeu : {{jeux.statistiques.noteMoyenne}}</p>
+      <p class="p-m-0">Note la plus haute : {{jeux.statistiques.noteMax}}</p>
+      <p class="p-m-0">Note la plus basse : {{jeux.statistiques.noteMin}}</p>
+      <p class="p-m-0">Nombre de commentaires pour ce jeu : {{jeux.statistiques.nbCommentaires}}</p>
+      <p class="p-m-0">Nombre de commentaires pour tous les jeux : {{jeux.statistiques.nbCommentairesTotal}}</p>
+      <p class="p-m-0">Classement de ce jeu : {{jeux.statistiques.rang}}</p>
+      <p class="p-m-0">Classement de ce jeu dans l'ensemble des jeux ayant le même thème : {{jeux.statistiques.nbJeuxTheme}}</p>
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="displayModal=false"  label="Ok" styleClass="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>
+
+
+<button pButton type="button" icon="pi pi-check" iconPos="left" [style]="{'background-color': '#f7ba2a'}" (click)="TriDateComm(jeux.commentaires)" label="Tri des commentaires"></button>
 <p-table>
   <ng-template pTemplate="header">
     <tr>
@@ -35,7 +51,7 @@
           <td>{{comm.id}}</td>
           <td>{{comm.commentaire}}</td>
           <td>{{comm.date_com | date:'dd.MM.yyyy H:mm'}}</td>
-          <td>{{comm.note}}</td>
+          <td><p-rating [(ngModel)]="comm.note" readonly="true" stars="5" style="color: yellow" [cancel]="false"></p-rating></td>
           <td>{{comm.user_id}}</td>
           <td><button pButton type="button" icon="pi pi-user-edit" iconPos="left" (click)="Modifier(comm)"></button></td>
         </tr>
