@@ -23,26 +23,9 @@ export class AppComponent implements OnInit{
         routerLink: ['/']
       },
       {
-        label: 'File',
-        icon: 'pi pi-fw pi-file',
-        items: [
-          {
-            label: 'RO',
-            icon: 'pi pi-chart-line',
-            routerLink: ['/ro']
-          },
-          {
-            label: 'Delete',
-            icon: 'pi pi-fw pi-trash'
-          },
-          {
-            separator: true
-          },
-          {
-            label: 'Export',
-            icon: 'pi pi-fw pi-external-link'
-          }
-        ]
+        label: 'RO',
+        icon: 'pi pi-chart-line',
+        routerLink: ['/ro']
       },
       {
         label: 'Utilisateur',

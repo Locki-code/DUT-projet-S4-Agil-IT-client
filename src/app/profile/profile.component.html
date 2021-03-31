@@ -1,6 +1,6 @@
 <h2 class="p-text-center">Profil d'un utilisateur</h2>
 <div *ngIf="!loading">
-  <p-fieldset legend="Votre profil">
+  <p-fieldset [style]="{'background-color': '#DCDCDC'}" legend="Votre profil">
     Vous avez l'identifiant n°{{user.id}} <br/>
     Votre adresse email est {{user.email}} <br/>
     Votre prénom est {{user.prenom}} <br/>
@@ -8,7 +8,7 @@
     Votre pseudo est {{user.pseudo}} <br/>
   </p-fieldset>
   <br/>
-  <p-fieldset legend="À savoir">
+  <p-fieldset [style]="{'background-color': '#DCDCDC'}" legend="À savoir">
     Compte crée le {{user.created_at | amDateFormat:'LL'}} <br/>
     Comtpe modifié le {{user.updated_at | amDateFormat:'LL'}} <br/>
   </p-fieldset>
