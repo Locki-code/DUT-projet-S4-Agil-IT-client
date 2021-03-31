@@ -16,7 +16,7 @@ export class ProfilEditComponent implements OnInit {
   formulaire = new FormGroup({
     nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
     prenom: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    mail: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')]),
+    email: new FormControl('', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')]),
   });
   private users: UserInfo;
 
@@ -34,8 +34,8 @@ export class ProfilEditComponent implements OnInit {
     return this.formulaire.get('prenom');
   }
 
-  get mail(): AbstractControl {
-    return this.formulaire.get('mail');
+  get email(): AbstractControl {
+    return this.formulaire.get('email');
   }
 
   // tslint:disable-next-line:typedef

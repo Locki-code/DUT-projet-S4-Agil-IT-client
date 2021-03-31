@@ -6,7 +6,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {LoginComponent} from './login/login.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthentificationService} from './_services/authentification.service';
 import {MessagesModule} from 'primeng/messages';
 import {ToastModule} from 'primeng/toast';
@@ -25,10 +25,12 @@ import {CardModule} from 'primeng/card';
 import {MenubarModule} from 'primeng/menubar';
 import {TableModule} from 'primeng/table';
 import { ProfilEditComponent } from './profil-edit/profil-edit.component';
-import {ButtonModule} from "primeng/button";
-import {RippleModule} from "primeng/ripple";
-import {InputTextModule} from "primeng/inputtext";
+import {ButtonModule} from 'primeng/button';
+import {RippleModule} from 'primeng/ripple';
+import {InputTextModule} from 'primeng/inputtext';
 import { RegisterComponent } from './register/register.component';
+import {FieldsetModule} from 'primeng/fieldset';
+import {PasswordModule} from 'primeng/password';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -58,7 +60,10 @@ registerLocaleData(localeFr, 'fr');
     TableModule,
     ButtonModule,
     RippleModule,
-    InputTextModule
+    InputTextModule,
+    FieldsetModule,
+    PasswordModule,
+    FormsModule,
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

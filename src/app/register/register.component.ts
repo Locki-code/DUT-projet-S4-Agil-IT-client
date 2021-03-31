@@ -12,6 +12,7 @@ import {MesValidateurs} from '../mes-validateurs';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  value: string;
   form: any = {
     email: null,
     password: null
@@ -79,7 +80,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         () => {
           this.router.navigate([this.returnUrl]);
-          this.messageService.add({severity: 'info', summary: 'Connexion', detail: `Bienvenue, ${this.authService.userValue.prenom} ${this.authService.userValue.nom}`, key: 'main'});
+          this.messageService.add({severity: 'info', summary: 'Connexion', detail: `Bienvenue sur votre session`, key: 'main'});
         },
         error => {
           console.log('Erreur: ', error);

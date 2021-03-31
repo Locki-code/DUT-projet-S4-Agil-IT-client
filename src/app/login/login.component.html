@@ -1,5 +1,23 @@
+<h2 class="p-text-center"> Veuillez remplir vous connecter </h2>
+
 <form [formGroup]="formulaire" (ngSubmit)="onSubmit()">
-  Email : <input type="text" formControlName="email"><br>
-  Mot de passe : <input type="password" formControlName="password"><br>
-  <button [disabled]="!formulaire.valid">Valide</button>
+  <div class="p-field">
+    <div class="form-group">
+      <input id="email" type="text" pInputText formControlName="email" placeholder="Veuillez saisir votre adresse email">
+      <div *ngIf="email.invalid && email.touched" class="invalid-feedback">
+        <div *ngIf="email.errors.required"> L'email est requis</div>
+        <div *ngIf="email.errors.email"> L'email est incorrect</div>
+      </div>
+    </div>
+  </div>
+  <div class="p-field">
+    <div class="form-group">
+      <input id="password" type="password" pInputText formControlName="password" placeholder="Veuillez saisir votre mot de passe">
+      <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
+        <div *ngIf="password.errors.required"> Le mot de passe est requis</div>
+        <div *ngIf="password.errors"> Le mot de passe doit comporter au moins 8 caractères (dont une majuscule, minuscule et chiffre) </div>
+      </div>
+    </div>
+  </div>
+  <button id="button" [disabled]="!formulaire.valid">Valider</button>
 </form>

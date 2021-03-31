@@ -1,43 +1,102 @@
+<h2 class="p-text-center"> Veuillez remplir ce formulaire d'inscription </h2>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <div class="form-group">
-  Prénom : <input type="text" formControlName="prenom">
-    <div *ngIf="prenom.errors" class="invalid-feedback">
-      <div *ngIf="prenom.errors.required"> Le prénom est requis</div>
-      <div *ngIf="prenom.errors.minlength">Le prénom doit comporter au moins 2 caractères</div>
+<div class="p-fluid p-formgrid p-grid p-mt-5">
+  <div class="p-field p-col">
+    <div class="form-group">
+    <input id="prenom" type="text" pInputText formControlName="prenom" placeholder="Veuillez saisir votre prénom">
+    <div *ngIf="prenom.invalid && prenom.touched" class="invalid-feedback">
+      <div *ngIf="prenom.errors.required" style="color:#ee7f01"> Le prénom est requis</div>
+      <div *ngIf="prenom.errors.minlength" style="color:#ee7f01">Le prénom doit comporter au moins 2 caractères</div>
+    </div>
     </div>
   </div>
-  <br>
-  <div class="form-group">
-  Nom : <input type="text" formControlName="nom">
-    <div *ngIf="nom.errors" class="invalid-feedback">
-      <div *ngIf="nom.errors.required"> Le nom est requis</div>
-      <div *ngIf="nom.errors.minlength">Le nom doit comporter au moins 2 caractères</div>
+  <div class="p-field p-col">
+    <div class="form-group">
+    <input id="nom" type="text" pInputText formControlName="nom" placeholder="Veuillez saisir votre nom">
+    <div *ngIf="nom.invalid && nom.touched" class="invalid-feedback">
+      <div *ngIf="nom.errors.required" style="color:#ee7f01"> Le nom est requis</div>
+      <div *ngIf="nom.errors.minlength" style="color:#ee7f01">Le nom doit comporter au moins 2 caractères</div>
+    </div>
     </div>
   </div>
-  <br>
-  <div class="form-group">
-  Pseudo : <input type="text" formControlName="pseudo">
-    <div *ngIf="pseudo.errors" class="invalid-feedback">
-      <div *ngIf="pseudo.errors.required"> Le pseudo est requis</div>
-      <div *ngIf="pseudo.errors.minlength">Le pseudo doit comporter au moins 2 caractères</div>
+</div>
+
+  <div class="p-fluid">
+    <div class="p-field">
+      <div class="form-group">
+      <input id="pseudo" type="text" pInputText formControlName="pseudo" placeholder="Veuillez saisir votre pseudo">
+      <div *ngIf="pseudo.invalid && pseudo.touched" class="invalid-feedback">
+        <div *ngIf="pseudo.errors.required" style="color:#ee7f01"> Le pseudo est requis</div>
+        <div *ngIf="pseudo.errors.minlength" style="color:#ee7f01">Le pseudo doit comporter au moins 2 caractères</div>
+      </div>
+      </div>
     </div>
-  </div>
-  <br>
-  <div class="form-group">
-  Email : <input type="text" formControlName="email">
-    <div *ngIf="email.errors" class="invalid-feedback">
-      <div *ngIf="email.errors.required"> L'email est requis</div>
-      <div *ngIf="email.errors.email"> L'email est incorrect</div>
+    <div class="p-field">
+      <div class="form-group">
+      <input id="email" type="text" pInputText formControlName="email" placeholder="Veuillez saisir votre adresse email">
+      <div *ngIf="email.invalid && email.touched" class="invalid-feedback">
+        <div *ngIf="email.errors.required" style="color:#ee7f01"> L'email est requis</div>
+        <div *ngIf="email.errors.email" style="color:#ee7f01"> L'adresse email n'a pas le bon format</div>
+      </div>
+      </div>
     </div>
-  </div>
-  <br/>
-  <div class="form-group">
-    Mot de passe : <input type="password" formControlName="password">
-    <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
-      Le mot de passe doit comporter au moins 8 caractères (dont une majuscule, minuscule et chiffre)
-    </div>
-  </div>
-  <br>
+    <div class="p-field">
+      <div class="form-group">
+        <!-- <p-password [(ngModel)]="value" [toggleMask]="true"> -->
+      <input id="password" type="password" pInputText formControlName="password" placeholder="Veuillez saisir votre mot de passe">
+      <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
+        <div *ngIf="password.errors.required" style="color:#ee7f01"> Le mot de passe est requis</div>
+        <div *ngIf="password.errors" style="color:#ee7f01"> Le mot de passe doit comporter au moins 8 caractères (dont une majuscule, minuscule et chiffre) </div>
+      </div>
+        <!-- </p-password> -->
+       </div>
+     </div>
+   </div>
+   <button id="button" [disabled]="!registerForm.valid"> Valider </button>
+ </form>
+   <!--
+   <div class="form-group">
+   Prénom : <input type="text" formControlName="prenom">
+     <div *ngIf="prenom.errors" class="invalid-feedback">
+       <div *ngIf="prenom.errors.required"> Le prénom est requis</div>
+       <div *ngIf="prenom.errors.minlength">Le prénom doit comporter au moins 2 caractères</div>
+     </div>
+   </div>
+   <br>
+   <div class="form-group">
+   Nom : <input type="text" formControlName="nom">
+     <div *ngIf="nom.errors" class="invalid-feedback">
+       <div *ngIf="nom.errors.required"> Le nom est requis</div>
+       <div *ngIf="nom.errors.minlength">Le nom doit comporter au moins 2 caractères</div>
+     </div>
+   </div>
+   <br>
+   <div class="form-group">
+   Pseudo : <input type="text" formControlName="pseudo">
+     <div *ngIf="pseudo.errors" class="invalid-feedback">
+       <div *ngIf="pseudo.errors.required"> Le pseudo est requis</div>
+       <div *ngIf="pseudo.errors.minlength">Le pseudo doit comporter au moins 2 caractères</div>
+     </div>
+   </div>
+   <br>
+   <div class="form-group">
+   Email : <input type="text" formControlName="email">
+     <div *ngIf="email.errors" class="invalid-feedback">
+       <div *ngIf="email.errors.required"> L'email est requis</div>
+       <div *ngIf="email.errors.email"> L'email est incorrect</div>
+     </div>
+   </div>
+   <br/>
+   <div class="form-group">
+     Mot de passe : <input type="password" formControlName="password">
+     <div *ngIf="password.invalid && password.touched" class="invalid-feedback">
+       Le mot de passe doit comporter au moins 8 caractères (dont une majuscule, minuscule et chiffre)
+     </div>
+   </div>
+   <br>
+   -->
+
+
   <!--
   <h4> Saisissez votre mot de passe </h4>
   <div formGroupName="password">
@@ -57,6 +116,4 @@
     </div>
   </div>
   -->
-  <button [disabled]="!registerForm.valid">Valider</button>
-</form>
 
