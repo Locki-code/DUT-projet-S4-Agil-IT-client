@@ -24,9 +24,9 @@ export class RegisterComponent implements OnInit {
   error = '';
 
   registerForm = new FormGroup({
-    prenom: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    nom: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    pseudo: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    prenom: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
+    nom: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
+    pseudo: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     email: new FormControl('', [Validators.required, Validators.email]),
     // password: new FormControl('', [Validators.required, Validators.pattern('(?=.*[A-Z])(?=.*\\d).{8,}')]),
     password: new FormGroup({

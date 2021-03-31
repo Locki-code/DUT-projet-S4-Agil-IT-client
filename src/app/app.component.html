@@ -1,16 +1,11 @@
-
 <p-menubar [model]="items" [style]="{'background-color':'#f7ba2a', 'margin-bottom':'2em'}">
 </p-menubar>
 
 <!--
-<ul>
-  <li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']"></a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']"></a></li>
-  <li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()"></button></li>
-  <li><a [routerLink]="['/ro']">Exo RO</a></li>
-</ul>
+<li *ngIf="authService.isLoggedOut$ | async"><a [routerLink]="['/login']"></a></li>
+<li *ngIf="authService.isLoggedIn$ | async"><a [routerLink]="['/profile']"></a></li>
+<li *ngIf="authService.isLoggedIn$ | async"><button (click)="logout()"></button></li>
 -->
-
 <router-outlet></router-outlet>
 
 <p-toast position="top-right" key="main"></p-toast>

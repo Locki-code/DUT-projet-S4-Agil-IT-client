@@ -15,7 +15,7 @@
 
   </ng-template>
 </p-card>
-<p-button (click)="showModalDialog()" icon="pi pi-chart-bar" label="Statistiques du jeu"></p-button>
+<button pButton (click)="showModalDialog()" icon="pi pi-chart-bar" [style]="{'background-color': '#f7ba2a', 'border-color': '#f7ba2a', 'margin-right': '20px'}" label="Statistiques du jeu"></button>
 <p-dialog header="Statistiques du jeu" [(visible)]="displayModal" [modal]="true" style="background-color: #f7ba2a" [style]="{width: '50vw'}" [baseZIndex]="10000"
           [draggable]="false" [resizable]="false">
   <p-fieldset [style]="{'background-color': '#DCDCDC'}" legend="Les notes du jeu" >
@@ -38,20 +38,25 @@
   </ng-template>
 </p-dialog>
 
-<p-button (click)="showModalDialog2()" icon="pi pi-money-bill" label="Informations tarifaires du jeu"></p-button>
+<button pButton (click)="showModalDialog2()" icon="pi pi-money-bill" [style]="{'background-color': '#f7ba2a', 'border-color': '#f7ba2a', 'margin-right': '20px'}" label="Informations tarifaires du jeu"></button>
 <p-dialog header="Informations tarifaires du jeu" [(visible)]="displayModal2" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
           [draggable]="false" [resizable]="false">
-  <p class="p-m-0">Prix moyen du jeu : {{jeux.tarif.prixMoyen}}</p>
-  <p class="p-m-0">Prix le plus haut : {{jeux.tarif.prixMax}}</p>
-  <p class="p-m-0">Prix le plus bas : {{jeux.tarif.prixMin}}</p>
-  <p class="p-m-0">Nombre d'utilisateurs qui possèdent ce jeu : {{jeux.tarif.nbAchats}}</p>
+  <p-fieldset [style]="{'background-color': '#DCDCDC'}" legend="Le prix du jeu" >
+    <p class="p-m-0"> Moyenne : {{jeux.tarif.prixMoyen}}</p>
+    <p class="p-m-0"> Le plus haut : {{jeux.tarif.prixMax}}</p>
+    <p class="p-m-0"> Le plus bas : {{jeux.tarif.prixMin}}</p>
+  </p-fieldset>
+  <br/>
+  <p-fieldset [style]="{'background-color': '#DCDCDC'}" legend="Utilisateurs" >
+    <p class="p-m-0"> Acquisition du jeu : {{jeux.tarif.nbAchats}}</p>
+  </p-fieldset>
   <ng-template pTemplate="footer">
     <p-button icon="pi pi-check" (click)="displayModal2=false"  label="Ok" styleClass="p-button-text"></p-button>
   </ng-template>
 </p-dialog>
 
-
-<button pButton type="button" icon="pi pi-check" iconPos="left" [style]="{'background-color': '#f7ba2a'}" (click)="TriDateComm(jeux.commentaires)" label="Tri des commentaires"></button>
+<button pButton type="button" icon="pi pi-check" iconPos="left" [style]="{'background-color': '#f7ba2a', 'border-color': '#f7ba2a', 'margin-right': '20px'}" (click)="TriDateComm(jeux.commentaires)" label="Tri des commentaires"></button>
+<br/>
 <p-table>
   <ng-template pTemplate="header">
     <tr>
