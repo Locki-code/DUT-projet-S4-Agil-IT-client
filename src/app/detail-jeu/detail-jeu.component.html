@@ -5,9 +5,9 @@
   <hr/>
   <p><strong>Identifiant : </strong>{{jeux.id}}</p>
   <p><strong>Description : </strong>{{jeux.description}}</p>
-  <p><strong>Editeur : </strong>{{jeux.editeur_id.nom}}</p>
+  <!--p><strong>Editeur : </strong>{{jeux.editeur_id.nom}}</p-->
   <p><strong>Langues : </strong>{{jeux.langue}}</p>
-  <p><strong>Theme : </strong>{{jeux.theme_id.nom}}</p>
+  <!--p><strong>Theme : </strong>{{jeux.theme_id.nom}}</p-->
   <p><strong>Durée : </strong>{{jeux.duree}}</p>
   <!--<p *ngFor="let meca of jeux.mecanic"><strong>Mécanique :</strong>{{meca.nom}}</p>-->
   <p><strong>Age : +</strong>{{jeux.age}}</p>
@@ -103,8 +103,10 @@
         <td>{{comm.date_com | date:'dd.MM.yyyy H:mm'}}</td>
         <td><p-rating [(ngModel)]="comm.note" [iconOnStyle]="{'color':'#f7ba2a'}" readonly="true" stars="5" style="color: yellow" [cancel]="false"></p-rating></td>
         <td>{{comm.user_id}}</td>
-        <td><button pButton type="button" icon="pi pi-user-edit" iconPos="left" style="background-color: #f7ba2a" (click)="ModifierComm(comm)"></button></td>
+        <td style="text-align: center" ><button *ngIf="user_id==comm.user_id" type="button" pButton icon="pi pi-trash" [routerLink]="['/commentaire/delete', comm.id]" style="background-color: #f7ba2a "></button></td>
+
       </tr>
     </ng-template>
   </p-table>
 </div>
+
