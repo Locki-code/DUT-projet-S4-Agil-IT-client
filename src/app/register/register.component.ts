@@ -12,6 +12,8 @@ import {MesValidateurs} from '../mes-validateurs';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  marked = false;
+  theCheckbox = false;
   value: string;
   form: any = {
     email: null,
@@ -41,6 +43,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+  }
+
+  toggleVisibility(e): void {
+    this.marked = e.target.checked;
   }
 
   get prenom(): AbstractControl {

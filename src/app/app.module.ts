@@ -33,6 +33,7 @@ import {InputTextModule} from 'primeng/inputtext';
 import { RegisterComponent } from './register/register.component';
 import {FieldsetModule} from 'primeng/fieldset';
 import {PasswordModule} from 'primeng/password';
+import {DropdownModule} from 'primeng/dropdown';
 import { EditCommentaireComponent } from './edit-commentaire/edit-commentaire.component';
 
 registerLocaleData(localeFr, 'fr');
@@ -69,6 +70,7 @@ registerLocaleData(localeFr, 'fr');
     FieldsetModule,
     PasswordModule,
     FormsModule,
+    DropdownModule
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},
