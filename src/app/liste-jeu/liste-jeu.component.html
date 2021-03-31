@@ -1,8 +1,42 @@
 <h1 class='center'>Jeux</h1>
 
-<button style="margin:20px " mat-raised-button (click)="modifTriName()">
+<div class="p-fluid p-grid">
+  <div class="p-field p-col-12 p-md-3">
+    <p-dropdown [options]="nbJoueurs"
+                (onChange)="selectFilterNbJoueur()"
+                [(ngModel)]="selectedNbJoueur"
+                optionLabel="nbJoueurs" class="ng-invalid ng-dirty"
+                placeholder="Nombre de joueur minimum">
+    </p-dropdown>
+  </div>
+  <div class="p-field p-col-12 p-md-3">
+    <p-dropdown [options]="themes"
+                (onChange)="selectFilterTheme()"
+                [(ngModel)]="selectedTheme"
+                optionLabel="nom" class="ng-invalid ng-dirty"
+                placeholder="Theme">
+    </p-dropdown>
+  </div>
+  <div class="p-field p-col-12 p-md-3">
+    <p-dropdown [options]="ages"
+                (onChange)="selectFilterAge()"
+                [(ngModel)]="selectedAge"
+                optionLabel="age" class="ng-invalid ng-dirty"
+                placeholder="Age minimum">
+    </p-dropdown>
+  </div>
+  <div class="p-field p-col-12 p-md-3">
+  <p-dropdown [options]="editeurs"
+              (onChange)="selectFilterEditeur()"
+              [(ngModel)]="selectedEditeur"
+              optionLabel="nom" class="ng-invalid ng-dirty"
+              placeholder="Editeur">
+  </p-dropdown>
+</div>
+</div>
+<button style="margin:20px " (click)="modifTriName()">
   <i class="pi {{iconTriName}}"></i> Tri par nom</button>
-<button style="margin:20px " mat-raised-button (click)="modifTriNote()">
+<button style="margin:20px " (click)="modifTriNote()">
   <i class="pi {{iconTriNote}}"></i> Tri par note</button>
 <p-table [value]="jeux$ | async">
   <ng-template pTemplate="header">
@@ -20,7 +54,7 @@
       <td>{{jeu.nom}}</td>
       <td>{{jeu.nombre_joueurs}}</td>
       <td>{{jeu.duree}}</td>
-      <td><button type="button" pButton pRipple icon="pi pi-exclamation-circle" [routerLink]="['/jeux', jeu.id]"></button></td>
+      <td><button type="button" pButton icon="pi pi-exclamation-circle" [routerLink]="['/jeux', jeu.id]"></button></td>
     </tr>
   </ng-template>
 </p-table>
