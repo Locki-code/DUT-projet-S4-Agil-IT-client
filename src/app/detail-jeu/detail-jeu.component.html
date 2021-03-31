@@ -1,18 +1,18 @@
-<p-card header="Advanced Card" subheader="Card Subheader" [style]="{width: '360px'}" styleClass="p-card-shadow">
+<p-card header="{{jeux.nom}}" subheader="{{jeux.nombre_joueurs}} joueurs" [style]="{width: '25rem', 'margin': '0 auto', 'border':' 1px solid','margin-top':'3em','margin-bottom':'3em'}" styleClass="p-card-shadow">
   <ng-template pTemplate="header">
     <img alt="Card" src="{{jeux.url_media}}">
 
   </ng-template>
-  <p>Id :{{jeux.id}}</p>
-  <p>Nom :{{jeux.nom}}</p>
-  <p>Description :{{jeux.description}}</p>
-  <p>Id Editeur :{{jeux.editeur_id}}</p>
-  <p>Regles :{{jeux.regles}}</p>
-  <p>Langues :{{jeux.langue}}</p>
-  <p>Theme :{{jeux.theme_id}}</p>
-  <p>Nombre joueur :{{jeux.nombre_joueurs}}</p>
-  <p>Durée :{{jeux.duree}}</p>
+  <hr/>
+  <p><strong>Identifiant :</strong>{{jeux.id}}</p>
+  <p><strong>Description :</strong>{{jeux.description}}</p>
+  <p><strong>Editeur :</strong>{{jeux.editeur_id.nom}}</p>
+  <p><strong>Langues :</strong>{{jeux.langue}}</p>
+  <p><strong>Theme :</strong>{{jeux.theme_id.nom}}</p>
+  <p><strong>Durée :</strong>{{jeux.duree}}</p>
   <ng-template pTemplate="footer">
+    <p><strong>Regles :</strong>{{jeux.regles}}</p>
+
   </ng-template>
 </p-card>
 <button pButton type="button" icon="pi pi-check" iconPos="left" (click)="TriDateComm(jeux.commentaires)"></button>
@@ -42,4 +42,8 @@
       </ng-template>
     </p-table>
   </div>
+
+
+
+
 
