@@ -6,6 +6,7 @@
       <th>Date d'achat</th>
       <th>Lieu d'achat</th>
       <th>Prix</th>
+      <th>Détail</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-jeu>
@@ -14,6 +15,7 @@
       <td>{{jeu.date_achat}}</td>
       <td>{{jeu.lieu}}</td>
       <td>{{jeu.prix}}</td>
+      <td><button type="button" pButton pRipple icon="pi pi-exclamation-circle" [routerLink]="['/jeux', jeu.id]"></button></td>
 
     </tr>
   </ng-template>

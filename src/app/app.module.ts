@@ -27,6 +27,8 @@ import {TableModule} from 'primeng/table';
 import { MesJeuxComponent } from './mes-jeux/mes-jeux.component';
 import { DetailJeuComponent } from './detail-jeu/detail-jeu.component';
 import {ButtonModule} from 'primeng/button';
+import { EditCommentaireComponent } from './edit-commentaire/edit-commentaire.component';
+
 
 registerLocaleData(localeFr, 'fr');
 
@@ -39,6 +41,7 @@ registerLocaleData(localeFr, 'fr');
     ListeJeuComponent,
     MesJeuxComponent,
     DetailJeuComponent,
+    EditCommentaireComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,7 @@ registerLocaleData(localeFr, 'fr');
     CardModule,
     MenubarModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
   ],
   providers: [AuthentificationService, MessageService,
     {provide: LOCALE_ID, useValue: 'fr-FR'},

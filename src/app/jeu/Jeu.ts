@@ -1,3 +1,5 @@
+import {Commentaire} from './Commentaire';
+
 export interface Jeu {
   id: number;
   nom: string;
@@ -9,4 +11,5 @@ export interface Jeu {
   theme_id: string[];
   nombre_joueurs: string;
   duree: string;
+  commentaires: Commentaire[];
 }
