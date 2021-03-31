@@ -1,3 +1,7 @@
+body {
+  padding: 30px;
+}
+
 #button{
   background-color: #f7ba2a;
   border: none;
@@ -6,6 +10,6 @@
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 12px;
+  font-size: 15px;
   border-radius: 10px;
 }

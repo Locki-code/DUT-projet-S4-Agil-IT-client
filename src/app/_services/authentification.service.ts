@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable, of, throwError} from 'rxjs';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {Router} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {User} from '../_models/user';
@@ -44,7 +44,6 @@ export class AuthentificationService {
   }
 
   login(email: string, password: string): Observable<any> {
-    console.log('email', email, ' password ', password);
     return this.http.post<any>(`${environment.apiUrl}/auth/login`, {email, password}, httpOptions)
       .pipe(
         tap(rep => console.log(rep)),
@@ -59,6 +58,25 @@ export class AuthentificationService {
         catchError(err => {
           this.stopRefreshTokenTimer();
           this.userSubject.next(ANONYMOUS_USER);
+          return throwError('bug');
+          // return of('');
+        }));
+  }
+
+  register(prenom: string, nom: string, pseudo: string, email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${environment.apiUrl}/auth/register`, {prenom, nom, pseudo, email, password}, httpOptions)
+      .pipe(
+        tap(rep => console.log(rep)),
+        map(rep => {
+          const user = {...rep.data.user, jwtToken: rep.data.token};
+          console.log('User connected : ', user);
+          return user;
+        }),
+        shareReplay(),
+        catchError(err => {
+          this.stopRefreshTokenTimer();
+          this.userSubject.next(ANONYMOUS_USER);
+          console.log('probleme');
           return throwError('bug');
           // return of('');
         }));
@@ -107,5 +125,4 @@ export class AuthentificationService {
   private stopRefreshTokenTimer(): void {
     clearTimeout(this.refreshTokenTimeout);
   }
-
 }
