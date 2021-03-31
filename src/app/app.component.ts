@@ -18,6 +18,11 @@ export class AppComponent implements OnInit{
   ngOnInit() {
     this.items = [
       {
+        label: 'La ludothèque des gens cool',
+        icon: 'pi pi-home',
+        routerLink: ['/']
+      },
+      {
         label: 'File',
         icon: 'pi pi-fw pi-file',
         items: [
