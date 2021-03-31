@@ -11,13 +11,13 @@ import {RegisterComponent} from './register/register.component';
 import { EditCommentaireComponent } from './edit-commentaire/edit-commentaire.component';
 import {AchatJeuComponent} from './achat-jeu/achat-jeu.component';
 import {SuppressionAchatJeuComponent} from './suppression-achat-jeu/suppression-achat-jeu.component';
-
 import {CreerJeuComponent} from './creer-jeu/creer-jeu.component';
 import {ModerationCommentaireComponent} from './moderation-commentaire/moderation-commentaire.component';
-
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: '', component: ListeJeuComponent},
+  {path: 'dashboard', component: DashboardComponent},
   {path: 'login', component: LoginComponent},
   {path: 'jeux/creer', component: CreerJeuComponent},
   {path: 'commentaire/delete/:id', component: ModerationCommentaireComponent},
