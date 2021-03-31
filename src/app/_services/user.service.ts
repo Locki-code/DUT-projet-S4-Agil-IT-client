@@ -57,12 +57,11 @@ export class UserService {
         }),
       );
   }
-  /*
-  updateProfile(users: UserInfo); : Observable < UserInfo > {
+
+  updateProfile(users: UserInfo): Observable < UserInfo > {
     return this.http.put(this.userUrl, users, httpOptions).pipe(
       tap(_ => this.log(`updates users id=${users.id}`)),
       catchError(this.handleError<any>('updateProfile'))
     );
   }
-  */
 }
