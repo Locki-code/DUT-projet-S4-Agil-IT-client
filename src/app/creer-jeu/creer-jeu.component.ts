@@ -80,7 +80,7 @@ export class CreerJeuComponent implements OnInit {
   durees: Duree[] = [ {duree: '- de 10 Minutes'}, {duree: 'Entre 10 et 20 Min'}, {duree: 'Une demi heure'}, {duree: 'une heure'}, {duree: 'Plus d\'une heure'}];
 
   formulaire = new FormGroup({
-    nom: new FormControl('', [Validators.required, Validators.minLength(4)]),
+    nom: new FormControl('', [Validators.required, Validators.minLength(10), Validators.maxLength(100)]),
     description: new FormControl('', [Validators.required, Validators.minLength(10)]),
     regles: new FormControl('', [Validators.required, Validators.minLength(10)]),
     langue: new FormControl('', [Validators.required]),

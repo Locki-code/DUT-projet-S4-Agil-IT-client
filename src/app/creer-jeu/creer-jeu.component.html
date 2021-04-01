@@ -6,7 +6,8 @@
     <input id="nom" type="text" pInputText placeholder="Nom" formControlName="nom">
     <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="mat-error">
       <div *ngIf="nom?.errors.required" style="color: crimson">Le nom est obligatoire</div>
-      <div *ngIf="nom?.errors.minlength"  style="color: crimson">Le nom doit comporter au moins 4 caractères</div>
+      <div *ngIf="nom?.errors.minlength"  style="color: crimson">Le nom doit comporter au moins 10 caractères</div>
+      <div *ngIf="nom?.errors.maxlength"  style="color: crimson">Le nom doit comporter au max 100 caractères</div>
     </div>
   </div>
     <div class="p-field p-col">
@@ -45,7 +46,9 @@
         <input id="poids" type="number" pInputText placeholder="Poids" formControlName="poids">
         <div *ngIf="poids.invalid && (poids.dirty || poids.touched)" class="mat-error">
           <div *ngIf="poids?.errors.required" style="color: crimson">Le poids du jeu est obligatoire</div>
-          <div *ngIf="poids?.errors.pattern"  style="color: crimson">Le poids du jeu doit être de la forme 99.99</div>
+          <div *ngIf="poids?.errors.pattern"  style="color: crimson">Le poids du jeu doit être de la forme 9.99</div>
+          <div *ngIf="poids?.errors.min"  style="color: crimson">Le poids du jeu doit supérieur à 0.10</div>
+          <div *ngIf="poids?.errors.max"  style="color: crimson">Le poids du jeu doit inférieur à 5.00</div>
         </div>
       </div>
     </div>
