@@ -1,7 +1,7 @@
 <p-dialog header="Suppression d'un jeu" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw', 'background-color': '#f7ba2a'}" [baseZIndex]="10000"
           [draggable]="false" [resizable]="false">
 
-  <p class="p-m-0">Voulez vous supprimer le jeu ce jeu ?</p>
+  <p class="p-m-0">Voulez vous supprimer ce jeu de votre collection ?</p>
   <ng-template pTemplate="footer">
     <p-button icon="pi pi-check" (click)="onSubmit()"  label="Oui" styleClass="p-button-text"></p-button>
     <p-button icon="pi pi-times" (click)="displayModal=false"  label="Non" styleClass="p-button-danger" ></p-button>
