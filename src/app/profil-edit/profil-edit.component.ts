@@ -5,6 +5,9 @@ import {ProfileComponent} from '../profile/profile.component';
 import {UserService} from '../_services/user.service';
 import {first} from 'rxjs/operators';
 import {AuthentificationService} from '../_services/authentification.service';
+import { Title } from '@angular/platform-browser';
+import {MessageService} from "primeng/api";
+
 
 @Component({
   selector: 'app-profil-edit',
@@ -29,10 +32,13 @@ export class ProfilEditComponent implements OnInit {
     email: new FormControl('', [Validators.required, Validators.email]),
   });
 
-  constructor(private userService: UserService, private router: Router, private authService: AuthentificationService, private route: ActivatedRoute,) { }
+  constructor(private userService: UserService, private router: Router, private authService: AuthentificationService, private route: ActivatedRoute,
+              private titleService: Title) { }
 
   ngOnInit(): void {
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+    this.titleService.setTitle('Edition du profil');
+
   }
 
 

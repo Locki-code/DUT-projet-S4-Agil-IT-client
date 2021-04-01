@@ -5,6 +5,8 @@ import {AuthentificationService} from '../_services/authentification.service';
 import {MessageService} from 'primeng/api';
 import {first} from 'rxjs/operators';
 import {MesValidateurs} from '../mes-validateurs';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-profile-create',
@@ -37,12 +39,14 @@ export class RegisterComponent implements OnInit {
   });
 
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private titleService: Title) {
   }
 
   ngOnInit(): void {
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+    this.titleService.setTitle('Inscription');
   }
 
   toggleVisibility(e): void {

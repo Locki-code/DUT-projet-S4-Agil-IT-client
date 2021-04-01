@@ -4,6 +4,8 @@ import {UserInfo} from '../_models/user-info';
 import {Observable} from 'rxjs';
 import {MessageService} from 'primeng/api';
 import {Router} from '@angular/router';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +17,8 @@ export class ProfileComponent implements OnInit {
   loading: boolean;
   user: UserInfo;
 
-  constructor(private userService: UserService, private messageService: MessageService, private router: Router) {
+  constructor(private userService: UserService, private messageService: MessageService, private router: Router,
+              private titleService: Title) {
     this.loading = false;
   }
 
@@ -32,6 +35,8 @@ export class ProfileComponent implements OnInit {
         this.router.navigateByUrl('/');
       }
     );
+    this.titleService.setTitle('Profil');
+
   }
 
 }

@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {Theme} from '../_models/theme';
 import {Editeur} from '../_models/editeur';
+import { Title } from '@angular/platform-browser';
 
 interface Age{
   age: number;
@@ -37,13 +38,15 @@ export class ListeJeuComponent implements OnInit {
   iconTriNote = '';
 
   constructor(private router: Router,
-              private jeuService: JeuService) {
+              private jeuService: JeuService,
+              private titleService: Title) {
   }
 
   ngOnInit(): void {
     this.jeux$ = this.jeuService.getJeux();
     this.getTheme();
     this.getEditeur();
+    this.titleService.setTitle('Liste des jeux');
   }
 
   getTheme(): void{

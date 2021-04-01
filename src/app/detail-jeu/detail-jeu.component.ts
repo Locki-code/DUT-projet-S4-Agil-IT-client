@@ -12,7 +12,8 @@ import {first} from 'rxjs/operators';
 import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {UserInfo} from '../_models/user-info';
 import {Mecanic} from '../_models/mecanic';
-import {AuthentificationService} from "../_services/authentification.service";
+import {AuthentificationService} from '../_services/authentification.service';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -55,7 +56,8 @@ export class DetailJeuComponent implements OnInit {
               private router: Router,
               private jeuService: JeuService,
               private triCommentaireService: TriCommentaireService,
-              private authService: AuthentificationService) {
+              private authService: AuthentificationService,
+              private titleService: Title) {
   }
 
   ngOnInit(): void {
@@ -69,6 +71,7 @@ export class DetailJeuComponent implements OnInit {
     this.jeux$ = this.jeuService.getJeux();
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
     this.loading = true;
+    this.titleService.setTitle('Détails du jeu');
 
   }
 

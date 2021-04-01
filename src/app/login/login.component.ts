@@ -4,6 +4,7 @@ import {AuthentificationService} from '../_services/authentification.service';
 import {first} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MessageService} from 'primeng/api';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-login',
@@ -25,12 +26,14 @@ export class LoginComponent implements OnInit {
   });
 
   constructor(private messageService: MessageService, private authService: AuthentificationService, private router: Router,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private titleService: Title) {
   }
 
   ngOnInit(): void {
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
+    this.titleService.setTitle('Connexion');
   }
 
   get email(): AbstractControl {

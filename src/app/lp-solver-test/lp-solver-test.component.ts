@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MessageService} from 'primeng/api';
+import { Title } from '@angular/platform-browser';
 
 declare var solver: any;
 
@@ -45,10 +46,12 @@ export class LpSolverTestComponent implements OnInit {
     optimize: 'benefice'
   };
 
-  constructor(public messageService: MessageService) {
+  constructor(public messageService: MessageService,
+              private titleService: Title) {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Solver test');
   }
 
   resolutionProbleme(): void {

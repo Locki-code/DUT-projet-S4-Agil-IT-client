@@ -69,7 +69,7 @@
     <div class="p-fluid">
       <div class="p-field">
         <p-fieldset [style]="{'background-color': '#DCDCDC'}" legend="Note" >
-          <p-rating id="note" type="number" formControlName="note" [(ngModel)]="val" [cancel]="false"></p-rating>
+          <p-rating id="note" type="number" [iconOnStyle]="{'color':'#f7ba2a'}" formControlName="note" [(ngModel)]="val" [cancel]="false"></p-rating>
           <div *ngIf="note.invalid && (note.dirty || note.touched)" class="invalid-feedback">
             <div *ngIf="note.errors.required" style="color:#ee7f01">La note est obligatoire</div>
             <div *ngIf="note.errors.minlength"  style="color:#ee7f01">La note doit être comprise entre 0 et 5</div>
@@ -86,7 +86,7 @@
         </p-fieldset>
       </div>
   </div>
-  <button pButton id="button" type="submit">Valider</button>
+  <button pButton id="button" type="submit" label="Valider" [style]="{'background-color': '#f7ba2a', 'border-color':'#f7ba2a' }"></button>
 </form>
 </p-dialog>
 <p-table>
@@ -97,7 +97,7 @@
       <th>Date commentaire</th>
       <th>note</th>
       <th>Identifiant Utilisateur</th>
-      <th>Modification</th>
+      <th>Modération</th>
     </tr>
   </ng-template>
 </p-table>

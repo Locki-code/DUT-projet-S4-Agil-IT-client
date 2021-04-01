@@ -44,6 +44,7 @@ import { CreerJeuComponent } from './creer-jeu/creer-jeu.component';
 import { ModerationCommentaireComponent } from './moderation-commentaire/moderation-commentaire.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CarouselModule } from 'primeng/carousel';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 registerLocaleData(localeFr, 'fr');
@@ -64,7 +65,8 @@ registerLocaleData(localeFr, 'fr');
     AchatJeuComponent,
     SuppressionAchatJeuComponent,
     ModerationCommentaireComponent,
-    DashboardComponent
+    DashboardComponent,
+    PageNotFoundComponent
 
   ],
   imports: [

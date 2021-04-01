@@ -14,6 +14,7 @@ import {SuppressionAchatJeuComponent} from './suppression-achat-jeu/suppression-
 import {CreerJeuComponent} from './creer-jeu/creer-jeu.component';
 import {ModerationCommentaireComponent} from './moderation-commentaire/moderation-commentaire.component';
 import {DashboardComponent} from './dashboard/dashboard.component';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {path: '', component: ListeJeuComponent},
@@ -30,7 +31,7 @@ const routes: Routes = [
   {path: 'profile/edit', component: ProfilEditComponent},
   {path: 'profile/achat/:id', component: AchatJeuComponent},
   {path: 'ro', component: LpSolverTestComponent},
-
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {JeuService} from '../_services/jeu.service';
 import {Observable} from 'rxjs';
 import {Jeu} from '../jeu/jeu';
+import { Title } from '@angular/platform-browser';
+import {AuthentificationService} from "../_services/authentification.service";
 
 class Jeux {
 }
@@ -18,7 +20,8 @@ export class DashboardComponent implements OnInit {
 
   responsiveOptions;
 
-  constructor(private jeuService: JeuService) {
+  constructor(private jeuService: JeuService,
+              private titleService: Title) {
     this.responsiveOptions = [
       {
         breakpoint: '1024px',
@@ -50,6 +53,8 @@ export class DashboardComponent implements OnInit {
       });
     });
     console.log(this.jeux);
+    this.titleService.setTitle('Dashboard');
+
   }
 
 

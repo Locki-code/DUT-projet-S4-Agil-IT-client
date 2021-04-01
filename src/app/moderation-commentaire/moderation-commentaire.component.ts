@@ -7,6 +7,7 @@ import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/form
 import {first} from 'rxjs/operators';
 import {ActivatedRoute} from '@angular/router';
 import {AuthentificationService} from '../_services/authentification.service';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -27,7 +28,8 @@ export class ModerationCommentaireComponent implements OnInit {
   form: any = {
   };
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private messageService: MessageService, private router: Router, private authService: AuthentificationService) {
+  constructor(private route: ActivatedRoute, private userService: UserService, private messageService: MessageService, private router: Router, private authService: AuthentificationService,
+              private titleService: Title) {
     this.loading = false;
   }
 
@@ -47,6 +49,8 @@ export class ModerationCommentaireComponent implements OnInit {
       }
     );
     this.showModalDialog();
+    this.titleService.setTitle('Moderation commentaire');
+
   }
 
   // tslint:disable-next-line:typedefs typedef

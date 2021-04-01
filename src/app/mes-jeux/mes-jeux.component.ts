@@ -6,6 +6,8 @@ import {ActivatedRoute} from '@angular/router';
 import {AuthentificationService} from '../_services/authentification.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {MessageService} from 'primeng/api';
+import { Title } from '@angular/platform-browser';
+
 
 declare var solver: any;
 
@@ -25,7 +27,8 @@ export class MesJeuxComponent implements OnInit {
   });
   private objets = [];
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthentificationService, private messageService: MessageService) { }
+  constructor(private route: ActivatedRoute, private userService: UserService, private authService: AuthentificationService, private messageService: MessageService,
+              private titleService: Title) { }
 
   ngOnInit(): void {
     const id = this.authService.userValue.id;
@@ -34,6 +37,8 @@ export class MesJeuxComponent implements OnInit {
     this.jeux.subscribe(
       val => console.log(val)
     );
+    this.titleService.setTitle('Mes jeux');
+
   }
 
   onCheckChange(event, jeu): void {

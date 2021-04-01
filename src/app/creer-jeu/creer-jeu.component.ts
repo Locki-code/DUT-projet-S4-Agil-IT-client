@@ -7,6 +7,9 @@ import {Theme} from '../jeu/theme';
 import {ActivatedRoute, Router} from '@angular/router';
 import {first} from 'rxjs/operators';
 import {min} from 'moment';
+import { Title } from '@angular/platform-browser';
+import {AuthentificationService} from "../_services/authentification.service";
+
 
 interface Langue{
   langue: string;
@@ -138,7 +141,8 @@ export class CreerJeuComponent implements OnInit {
     return this.formulaire.get('mecanique');
   }
 
-  constructor(public serviceJeu: JeuService, private route: ActivatedRoute, private router: Router) {
+  constructor(public serviceJeu: JeuService, private route: ActivatedRoute, private router: Router,
+              private titleService: Title) {
   }
 
   ngOnInit(): void {
@@ -146,6 +150,7 @@ export class CreerJeuComponent implements OnInit {
     this.getEditeurs();
     this.getThemes();
     this.returnURL = this.route.snapshot.queryParams.returnUrl || '/';
+    this.titleService.setTitle('Créer un jeu');
   }
   onSubmit() {
     // tslint:disable-next-line:no-console
